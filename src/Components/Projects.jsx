@@ -1,7 +1,14 @@
 import React from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import billaImage from "/Images/billa.png";
+import cafeImage from "/Images/flower.png";
+import todoImage from "/Images/todo.png";
+import newsImage from "/Images/news.jpg";
+import candyImage from "/Images/candy.png";
+import responsiveImage from "/Images/responsive.png";
+import bmiImage from "/Images/bmi.png";
+import quizImage from "/Images/quiz.png";
 const Projects = () => {
   const projects = [
     {
@@ -9,7 +16,7 @@ const Projects = () => {
       name: "BMI Calculator",
       description:
         "BmiApp is a Flutter application that calculates Body Mass Index (BMI) based on user input for height and weight.",
-      image: "Images/bmi.png",
+      image: bmiImage,
       github: "https://github.com/atefElhamsa/bmi_app",
     },
     {
@@ -17,7 +24,7 @@ const Projects = () => {
       name: "Quiz App",
       description:
         "Interactive quiz app developed, offering multiple-choice questions, and tracking user scores.",
-      image: "Images/quiz.png",
+      image: quizImage,
       github: "https://github.com/atefElhamsa/Quiz-App",
     },
     {
@@ -25,7 +32,7 @@ const Projects = () => {
       name: "Billa App",
       description:
         "Billa App is a food ordering application, offering seamless browsing and ordering experience, adding foods to their favorite list.",
-      image: "Images/billa.png",
+      image: billaImage,
       github: "https://github.com/atefElhamsa/Billa",
     },
     {
@@ -33,7 +40,7 @@ const Projects = () => {
       name: "Cafe App (Flower)",
       description:
         "A café management app developed, featuring an intuitive UI for menu browsing and ordering.",
-      image: "Images/flower.png",
+      image: cafeImage,
       github: "https://github.com/atefElhamsa/Flower",
     },
     {
@@ -41,7 +48,7 @@ const Projects = () => {
       name: "Note App (Todo)",
       description:
         "A simple note-taking app built using Flutter, allowing users to create, save, archive, and manage notes efficiently.",
-      image: "Images/todo.png",
+      image: todoImage,
       github: "https://github.com/atefElhamsa/todo-app",
     },
     {
@@ -49,7 +56,7 @@ const Projects = () => {
       name: "NewsApp (News wave)",
       description:
         "A news aggregator app was built using Api, fetching, and displaying the latest headlines from various sources.",
-      image: "Images/news.jpg",
+      image: newsImage,
       github: "https://github.com/atefElhamsa/News-App",
     },
     {
@@ -57,7 +64,7 @@ const Projects = () => {
       name: "E-commerce App (MrCandy)",
       description:
         "A feature-rich mobile application built using Flutter with Api for seamless online shopping experiences. It includes user authentication, product browsing, cart management, and order processing functionalities.",
-      image: "Images/candy.png",
+      image: candyImage,
       github: "https://github.com/atefElhamsa/Mr-Candy-App",
     },
     {
@@ -65,7 +72,7 @@ const Projects = () => {
       name: "Responsive Dasgboard App",
       description:
         "A responsive dashboard application built using Flutter, featuring adaptive layouts and interactive components for an optimal user experience across devices.",
-      image: "Images/responsive.png",
+      image: responsiveImage,
       github: "https://github.com/atefElhamsa/responsive_app",
     },
   ];
