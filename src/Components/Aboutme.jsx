@@ -18,7 +18,9 @@ import {
 } from "react-icons/si";
 import { MdApi } from "react-icons/md";
 import { motion } from "framer-motion";
-
+import dartIcon from "/Images/dart-icon.svg";
+import flutterIcon from "/Images/flutter-icon.svg";
+import blocIcon from "/Images/bloc-icon.svg";
 const skills = [
   {
     name: "HTML",
@@ -38,27 +40,17 @@ const skills = [
   {
     name: "Dart",
     level: "100%",
-    icon: (
-      <img src="/public/Images/dart-icon.svg" alt="Dart" className="w-6 h-6" />
-    ),
+    icon: <img src={dartIcon} alt="Dart" className="w-6 h-6" />,
   },
   {
     name: "Flutter",
     level: "97%",
-    icon: (
-      <img
-        src="/public/Images/flutter-icon.svg"
-        alt="Flutter"
-        className="w-6 h-6"
-      />
-    ),
+    icon: <img src={flutterIcon} alt="Flutter" className="w-6 h-6" />,
   },
   {
     name: "Bloc State Management",
     level: "99%",
-    icon: (
-      <img src="/public/Images/bloc-icon.svg" alt="Bloc" className="w-6 h-6" />
-    ),
+    icon: <img src={blocIcon} alt="Bloc" className="w-6 h-6" />,
   },
   {
     name: "Material-UI",
