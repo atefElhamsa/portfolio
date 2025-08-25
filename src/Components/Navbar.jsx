@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="flex gap-4 mt-6 justify-center md:justify-start">
           <motion.a
             href="/public/CV/Atef Elhamsa CV.pdf"
-            download
+            download="Atef Elhamsa CV.pdf"
             className="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow-lg "
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
