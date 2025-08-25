@@ -65,7 +65,7 @@ const Contact = () => {
 
               <div className="flex items-center gap-6 bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition">
                 <a
-                  href="https://www.facebook.com/atef.elhamsa.7"
+                  href="https://www.facebook.com/share/19pd77djdC/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-600 transition text-3xl"
