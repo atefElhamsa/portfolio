@@ -83,9 +83,9 @@ const Projects = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: 0 }}
       >
-        <div className="max-w-6xl mx-auto px-6 sm:px-6">
+        <div className="max-w-6xl mx-auto px-6 sm:px-4">
           <h2 className="text-4xl font-extrabold text-center mb-12">
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-transparent bg-clip-text drop-shadow-lg underline decoration-indigo-400 decoration-4 underline-offset-6">
               Projects
@@ -101,7 +101,8 @@ const Projects = () => {
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-48 sm:h-60 object-cover"
+                  className="w-full h-40 sm:h-60 object-cover"
+                  loading="lazy"
                 />
 
                 <div className="p-5">
