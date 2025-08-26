@@ -80,10 +80,10 @@ const Projects = () => {
   return (
     <section className="py-16 bg-gray-900 text-white" id="projects">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.4, delay: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-4">
           <h2 className="text-4xl font-extrabold text-center mb-12">
