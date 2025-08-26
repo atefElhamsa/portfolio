@@ -83,7 +83,11 @@ const Projects = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
+<<<<<<< HEAD
         transition={{ duration: 0.5, delay: 0.1 }}
+=======
+        transition={{ duration: 0.5, delay: 0 }}
+>>>>>>> d13b62e49b6bbc0b8f8cdeb242b83b4540eda844
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-4">
           <h2 className="text-4xl font-extrabold text-center mb-12">
