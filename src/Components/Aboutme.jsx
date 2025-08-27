@@ -21,6 +21,7 @@ import { motion } from "framer-motion";
 import dartIcon from "/Images/dart-icon.svg";
 import flutterIcon from "/Images/flutter-icon.svg";
 import blocIcon from "/Images/bloc-icon.svg";
+import cv from "/CV/Atef Elhamsa CV.pdf";
 const skills = [
   {
     name: "HTML",
@@ -114,7 +115,7 @@ const Aboutme = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-start">
           <a
-            href="public/CV/Atef Elhamsa CV.pdf"
+            href={cv}
             download
             className="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition"
           >
