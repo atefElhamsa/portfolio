@@ -6,6 +6,8 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaWhatsapp,
+  FaTelegram,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 const Contact = () => {
@@ -87,6 +89,22 @@ const Contact = () => {
                   className="hover:text-gray-300 transition text-3xl"
                 >
                   <FaGithub />
+                </a>
+                <a
+                  href="https://wa.me/201552946586"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-400 transition text-3xl"
+                >
+                  <FaWhatsapp />
+                </a>
+                <a
+                  href="https://t.me/+201552946586"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition text-3xl"
+                >
+                  <FaTelegram />
                 </a>
               </div>
             </div>
