@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
@@ -6,6 +7,7 @@ import { SiNextdotjs } from "react-icons/si";
 import dartIcon from "/Images/dart-icon.svg";
 import flutterIcon from "/Images/flutter-icon.svg";
 import cv from "/CV/Atef Elhamsa CV.pdf";
+import myPhoto from "/Images/myPhoto.jpg";
 const Navbar = () => {
   return (
     <section
@@ -113,7 +115,7 @@ const Navbar = () => {
         <div className="absolute w-40 md:w-64 h-40 md:h-64 rounded-full bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 opacity-40 animate-pulse blur-3xl"></div>
 
         <motion.img
-          src="Images/atef.jpeg"
+          src={myPhoto}
           alt="Atef Elhamsa"
           className="rounded-full w-50 md:w-100 h-50 md:h-100 object-cover border-indigo-700 shadow-[0_0_25px_10px_rgba(99,102,241,0.5)] cursor-pointer"
           animate={{
