@@ -17,11 +17,14 @@ import {
   SiMaterialdesign,
 } from "react-icons/si";
 import { MdApi } from "react-icons/md";
+/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
+/* eslint-enable no-unused-vars */
 import dartIcon from "/Images/dart-icon.svg";
 import flutterIcon from "/Images/flutter-icon.svg";
 import blocIcon from "/Images/bloc-icon.svg";
 import cv from "/CV/Atef Elhamsa CV.pdf";
+import supabase from "/Images/supabase.jpg";
 const skills = [
   {
     name: "HTML",
@@ -54,11 +57,6 @@ const skills = [
     icon: <img src={blocIcon} alt="Bloc" className="w-6 h-6" />,
   },
   {
-    name: "Material-UI",
-    level: "90%",
-    icon: <SiMaterialdesign className="text-blue-300 text-2xl" />,
-  },
-  {
     name: "GitHub",
     level: "95%",
     icon: <FaGithub className="text-gray-300 text-2xl" />,
@@ -72,6 +70,11 @@ const skills = [
     name: "REST APIs",
     level: "95%",
     icon: <MdApi className="text-green-400 text-2xl" />,
+  },
+  {
+    name: "Supabase",
+    level: "80%",
+    icon: <img src={supabase} alt="Supabase" className="w-6 h-6" />,
   },
 ];
 
@@ -175,6 +178,22 @@ const Aboutme = () => {
                   Intensive Code Camp –{" "}
                   <span className="text-indigo-300 font-semibold">
                     Internship Mobile App Developer using Flutter
+                  </span>
+                </p>
+              </div>
+              <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition">
+                <p className="text-sm text-indigo-400 font-medium mb-2">
+                  June 2025 – October 2025
+                </p>
+                <h3 className="text-xl font-semibold mb-2 text-white">
+                  Instructor at Core Academy
+                </h3>
+                <p className="text-gray-300">
+                  Tanta – Egypt
+                  <br />
+                  Instructor –{" "}
+                  <span className="text-indigo-300 font-semibold">
+                    Teaching Mobile App Development using Flutter
                   </span>
                 </p>
               </div>
