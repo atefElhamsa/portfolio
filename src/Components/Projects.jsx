@@ -2,12 +2,12 @@
 import React from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import bmiImage from "/Images/bmi.png";
-import quizImage from "/Images/quiz.png";
-import todoImage from "/Images/todo.png";
-import newsImage from "/Images/news.jpg";
-import candyImage from "/Images/candy.png";
-import responsiveImage from "/Images/responsive.png";
+import bmiImage from "./Images/bmi.png";
+import quizImage from "./Images/quiz.png";
+import todoImage from "./Images/todo.png";
+import newsImage from "./Images/news.jpg";
+import candyImage from "./Images/candy.png";
+import responsiveImage from "./Images/responsive.png";
 const Projects = () => {
   const projects = [
     {
