@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Home, User, Mail, Code2, GraduationCap, Menu, X } from "lucide-react";
 import { FaTools } from "react-icons/fa";
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 

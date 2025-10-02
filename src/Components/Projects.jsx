@@ -1,14 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import billaImage from "/Images/billa.png";
-import cafeImage from "/Images/flower.png";
+import bmiImage from "/Images/bmi.png";
+import quizImage from "/Images/quiz.png";
 import todoImage from "/Images/todo.png";
 import newsImage from "/Images/news.jpg";
 import candyImage from "/Images/candy.png";
 import responsiveImage from "/Images/responsive.png";
-import bmiImage from "/Images/bmi.png";
-import quizImage from "/Images/quiz.png";
 const Projects = () => {
   const projects = [
     {
@@ -29,22 +28,6 @@ const Projects = () => {
     },
     {
       id: 3,
-      name: "Billa App",
-      description:
-        "Billa App is a food ordering application, offering seamless browsing and ordering experience, adding foods to their favorite list.",
-      image: billaImage,
-      github: "https://github.com/atefElhamsa/Billa",
-    },
-    {
-      id: 4,
-      name: "Cafe App (Flower)",
-      description:
-        "A café management app developed, featuring an intuitive UI for menu browsing and ordering.",
-      image: cafeImage,
-      github: "https://github.com/atefElhamsa/Flower",
-    },
-    {
-      id: 5,
       name: "Note App (Todo)",
       description:
         "A simple note-taking app built using Flutter, allowing users to create, save, archive, and manage notes efficiently.",
@@ -52,7 +35,7 @@ const Projects = () => {
       github: "https://github.com/atefElhamsa/todo-app",
     },
     {
-      id: 6,
+      id: 4,
       name: "NewsApp (News wave)",
       description:
         "A news aggregator app was built using Api, fetching, and displaying the latest headlines from various sources.",
@@ -60,7 +43,7 @@ const Projects = () => {
       github: "https://github.com/atefElhamsa/News-App",
     },
     {
-      id: 7,
+      id: 5,
       name: "E-commerce App (MrCandy)",
       description:
         "A feature-rich mobile application built using Flutter with Api for seamless online shopping experiences. It includes user authentication, product browsing, cart management, and order processing functionalities.",
@@ -68,8 +51,8 @@ const Projects = () => {
       github: "https://github.com/atefElhamsa/Mr-Candy-App",
     },
     {
-      id: 8,
-      name: "Responsive Dasgboard App",
+      id: 6,
+      name: "Responsive Dashboard App",
       description:
         "A responsive dashboard application built using Flutter, featuring adaptive layouts and interactive components for an optimal user experience across devices.",
       image: responsiveImage,

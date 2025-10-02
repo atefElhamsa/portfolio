@@ -1,16 +1,13 @@
-
-import './App.css'
-import Aboutme from './Components/Aboutme'
-import ScrollToTop from './Components/buttonScroll'
-import Contact from './Components/Contact'
-import Footer from './Components/footer'
-import Header from './Components/Header'
-import Navbar from './Components/Navbar'
-import Projects from './Components/Projects'
+import "./App.css";
+import Aboutme from "./Components/Aboutme";
+import ScrollToTop from "./Components/buttonScroll";
+import Contact from "./Components/Contact";
+import Footer from "./Components/footer";
+import Header from "./Components/Header";
+import Navbar from "./Components/Navbar";
+import Projects from "./Components/Projects";
 
 function App() {
-
-
   return (
     <>
       <Header />
@@ -19,9 +16,9 @@ function App() {
       <Projects />
       <Contact />
       <ScrollToTop />
-      <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
