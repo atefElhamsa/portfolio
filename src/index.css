@@ -3,3 +3,96 @@
 
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
+
+/* Custom scrollbar for premium look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617; /* slate-950 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e1b4b; /* indigo-950 */
+  border: 2px solid #020617;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #312e81; /* indigo-900 */
+}
+
+/* Set up premium global typography */
+html, body {
+  scroll-behavior: smooth;
+  background-color: #020617;
+  font-family: 'Outfit', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Shimmer card hover effect */
+.hover-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: 0.85s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hover-shimmer:hover::before {
+  left: 150%;
+  opacity: 1;
+}
+
+/* Drifting background glowing orb animations */
+@keyframes float-orb-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(50px, -80px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 40px) scale(0.9);
+  }
+}
+
+@keyframes float-orb-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-60px, 60px) scale(1.2);
+  }
+}
+
+.animate-float-1 {
+  animation: float-orb-1 25s infinite ease-in-out;
+}
+
+.animate-float-2 {
+  animation: float-orb-2 30s infinite ease-in-out;
+}
