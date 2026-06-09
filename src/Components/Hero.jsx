@@ -123,10 +123,11 @@ const Hero = () => {
         >
           <a
             href={cv}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-indigo-500/25 hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-200 text-center"
           >
-            Download CV
+            View CV
           </a>
 
           <a

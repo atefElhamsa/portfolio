@@ -159,10 +159,11 @@ const Aboutme = () => {
         <div className="flex flex-wrap gap-4 pt-2">
           <a
             href={cv}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-2.5 bg-indigo-650 hover:bg-indigo-600 text-white font-medium rounded-xl shadow-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            Download CV
+            View CV
           </a>
           <a
             href="#contact"
