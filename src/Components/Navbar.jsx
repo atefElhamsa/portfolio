@@ -3,17 +3,19 @@ import React, { useState, useEffect } from "react";
 import { Home, User, Mail, Code2, Menu, X } from "lucide-react";
 import { FaTools } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 const Navbar = () => {
+  const { t, language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const navLinks = [
-    { id: "home", label: "Home", icon: <Home className="h-4 w-4" /> },
-    { id: "about", label: "About me", icon: <User className="h-4 w-4" /> },
-    { id: "skills", label: "Skills", icon: <FaTools className="h-4 w-4" /> },
-    { id: "projects", label: "Projects", icon: <Code2 className="h-4 w-4" /> },
-    { id: "contact", label: "Contact me", icon: <Mail className="h-4 w-4" /> },
+    { id: "home", labelKey: "navHome", icon: <Home className="h-4 w-4" /> },
+    { id: "about", labelKey: "navAbout", icon: <User className="h-4 w-4" /> },
+    { id: "skills", labelKey: "navSkills", icon: <FaTools className="h-4 w-4" /> },
+    { id: "projects", labelKey: "navProjects", icon: <Code2 className="h-4 w-4" /> },
+    { id: "contact", labelKey: "navContact", icon: <Mail className="h-4 w-4" /> },
   ];
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Navbar = () => {
           {/* Logo with Gradient Text */}
           <a href="#home" className="flex items-center gap-2 group">
             <span className="text-2xl font-black bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
-              Atef Elhamsa
+              {t("name")}
             </span>
           </a>
 
@@ -62,7 +64,7 @@ const Navbar = () => {
                   }`}
                 >
                   {link.icon}
-                  {link.label}
+                  {t(link.labelKey)}
                   {isActive && (
                     <motion.span
                       layoutId="activeIndicator"
@@ -73,6 +75,14 @@ const Navbar = () => {
                 </a>
               );
             })}
+
+            {/* Premium Language Switcher Toggle */}
+            <button
+              onClick={() => setLanguage(language === "en" ? "ar" : "en")}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-indigo-500/10 border border-slate-800 hover:border-indigo-500/30 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-all duration-200 cursor-pointer shadow-md"
+            >
+              <span>{language === "en" ? "العربية" : "English"}</span>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -109,7 +119,7 @@ const Navbar = () => {
             >
               <div className="flex items-center justify-between mb-8">
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-                  Navigation
+                  {t("navTitle")}
                 </span>
                 <button
                   onClick={() => setIsOpen(false)}
@@ -133,13 +143,24 @@ const Navbar = () => {
                           : "bg-slate-900/50 border-transparent text-slate-400 hover:text-slate-250 hover:bg-slate-900"
                       }`}
                     >
-                      <span className={isActive ? "text-indigo-400" : "text-slate-500"}>
+                      <span className={isActive ? "text-indigo-400" : "text-slate-505"}>
                         {link.icon}
                       </span>
-                      {link.label}
+                      {t(link.labelKey)}
                     </a>
                   );
                 })}
+
+                {/* Mobile Language Switcher Button */}
+                <button
+                  onClick={() => {
+                    setLanguage(language === "en" ? "ar" : "en");
+                    setIsOpen(false);
+                  }}
+                  className="flex items-center justify-center gap-2 mt-4 px-4 py-3.5 rounded-xl border border-indigo-550/20 bg-indigo-500/5 text-indigo-300 hover:bg-indigo-500/10 text-base font-semibold transition-all duration-300 cursor-pointer shadow-md"
+                >
+                  <span>{language === "en" ? "العربية" : "English"}</span>
+                </button>
               </nav>
             </motion.div>
           </>

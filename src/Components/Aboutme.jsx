@@ -11,6 +11,7 @@ import flutterIcon from "/Images/flutter-icon.svg";
 import blocIcon from "/Images/bloc-icon.svg";
 import cv from "/CV/Atef_Elhamsa_CV.pdf";
 import supabase from "/Images/supabase.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const skills = [
   {
@@ -94,32 +95,34 @@ const skills = [
 
 const timeline = [
   {
-    date: "July 2025 – August 2025",
-    institution: "Information Technology Institute (ITI)",
-    branch: "Tanta Branch – Egypt",
-    role: "Intensive Code Camp – Summer Internship",
-    details: "Mobile App Developer using Flutter",
+    dateKey: "timelineItiDate",
+    institutionKey: "itiInst",
+    branchKey: "tantaBranch",
+    roleKey: "itiCamp",
+    detailsKey: "roleDev",
     type: "internship",
   },
   {
-    date: "May 2025 – July 2025",
-    institution: "National Telecommunication Institute (NTI)",
-    branch: "Tanta Branch – Egypt",
-    role: "Intensive Code Camp – Internship",
-    details: "Mobile App Developer using Flutter",
+    dateKey: "timelineNtiDate",
+    institutionKey: "ntiInst",
+    branchKey: "tantaBranch",
+    roleKey: "ntiCamp",
+    detailsKey: "roleDev",
     type: "internship",
   },
   {
-    date: "June 2025 – October 2025",
-    institution: "Core Academy",
-    branch: "Tanta – Egypt",
-    role: "Instructor",
-    details: "Teaching Mobile App Development using Flutter",
+    dateKey: "timelineCoreDate",
+    institutionKey: "coreAcad",
+    branchKey: "tantaEgypt",
+    roleKey: "roleInstructor",
+    detailsKey: "teachingFlutter",
     type: "teaching",
   },
 ];
 
 const Aboutme = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="about"
@@ -137,23 +140,20 @@ const Aboutme = () => {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">About Me</h2>
+        <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">{t("aboutTitle")}</h2>
         <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight">
-          I'm{" "}
+          {t("im")}{" "}
           <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
-            Atef Elhamsa
+            {t("name")}
           </span>
         </h1>
 
         <h3 className="text-xl md:text-2xl font-semibold text-slate-200">
-          Flutter Developer & Instructor
+          {t("aboutRole")}
         </h3>
 
         <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-3xl">
-          Passionate Flutter Developer skilled in{" "}
-          <span className="text-cyan-450 font-semibold">Dart</span>,{" "}
-          <span className="text-cyan-400 font-semibold">Flutter</span>, and
-          cross-platform mobile development. I specialize in building responsive, user-friendly mobile applications with clean, efficient code and modern UI designs. With experience in state management solutions like Provider, Riverpod, and Bloc, as well as Firebase and RESTful APIs, I focus on delivering seamless performance and engaging user experiences. Continuously learning and exploring new technologies, I strive to create innovative, high-quality mobile applications.
+          {t("aboutDesc")}
         </p>
 
         <div className="flex flex-wrap gap-4 pt-2">
@@ -163,13 +163,13 @@ const Aboutme = () => {
             rel="noopener noreferrer"
             className="px-6 py-2.5 bg-indigo-650 hover:bg-indigo-600 text-white font-medium rounded-xl shadow-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            View CV
+            {t("viewCv")}
           </a>
           <a
             href="#contact"
-            className="px-6 py-2.5 border border-slate-800 hover:border-indigo-500/40 text-indigo-450 hover:text-indigo-400 font-medium rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+            className="px-6 py-2.5 border border-slate-800 hover:border-indigo-500/40 text-indigo-455 hover:text-indigo-400 font-medium rounded-xl transition-all duration-200 hover:-translate-y-0.5"
           >
-            Contact Me
+            {t("contactMe")}
           </a>
         </div>
       </motion.div>
@@ -185,16 +185,16 @@ const Aboutme = () => {
             className="space-y-12"
           >
             <h2 className="text-3xl font-bold text-white relative inline-block">
-              Experience & Education
-              <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-indigo-500 rounded" />
+              {t("expEducation")}
+              <span className="absolute bottom-0 start-0 w-1/3 h-1 bg-indigo-500 rounded" />
             </h2>
 
             {/* Timeline element */}
-            <div className="relative pl-6 md:pl-10 border-l border-slate-800 space-y-10">
+            <div className="relative ps-6 md:ps-10 border-s border-slate-800 space-y-10">
               {timeline.map((item, index) => (
                 <div key={index} className="relative group">
                   {/* Timeline icon indicator */}
-                  <span className="absolute -left-[39px] md:-left-[55px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border border-slate-800 bg-slate-950 text-indigo-400 transition-all duration-300 group-hover:border-indigo-550 group-hover:text-indigo-350 shadow-md group-hover:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                  <span className="absolute -start-[39px] md:-start-[55px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full border border-slate-800 bg-slate-950 text-indigo-400 transition-all duration-300 group-hover:border-indigo-550 group-hover:text-indigo-350 shadow-md group-hover:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
                     {item.type === "teaching" ? (
                       <Briefcase className="w-4 h-4" />
                     ) : (
@@ -204,20 +204,20 @@ const Aboutme = () => {
 
                   {/* Glassmorphic timeline card */}
                   <div className="hover-shimmer bg-slate-900/40 border border-slate-900 group-hover:border-slate-800/80 p-6 md:p-8 rounded-2xl shadow-md transition-all duration-300 group-hover:bg-slate-900/60 group-hover:-translate-y-1">
-                    <span className="text-xs font-semibold text-indigo-450 bg-indigo-550/10 px-3 py-1 rounded-full border border-indigo-550/20 inline-block mb-3">
-                      {item.date}
+                    <span className="text-xs font-semibold text-indigo-455 bg-indigo-550/10 px-3 py-1 rounded-full border border-indigo-555/20 inline-block mb-3">
+                      {t(item.dateKey)}
                     </span>
                     <h3 className="text-xl font-bold text-white mb-1">
-                      {item.institution}
+                      {t(item.institutionKey)}
                     </h3>
                     <p className="text-sm text-slate-400 mb-3 font-medium flex items-center gap-1">
                       <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                      {item.branch}
+                      {t(item.branchKey)}
                     </p>
                     <p className="text-slate-350 text-base">
-                      {item.role} &ndash;{" "}
+                      {t(item.roleKey)} &ndash;{" "}
                       <span className="text-indigo-300 font-semibold">
-                        {item.details}
+                        {t(item.detailsKey)}
                       </span>
                     </p>
                   </div>
@@ -238,11 +238,11 @@ const Aboutme = () => {
       >
         <div id="skills" className="w-full">
           <h2 className="text-3xl font-bold text-white mb-2 relative inline-block">
-            My Tech Stack
-            <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-indigo-500 rounded" />
+            {t("myTechStack")}
+            <span className="absolute bottom-0 start-0 w-1/3 h-1 bg-indigo-500 rounded" />
           </h2>
           <p className="text-slate-400 text-sm md:text-base mt-3 mb-10 max-w-xl">
-            A specialized toolkit focused on creating ultra-performance, pixel-perfect mobile applications and fast-loading web interfaces.
+            {t("techStackDesc")}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">

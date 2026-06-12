@@ -7,9 +7,12 @@ import Footer from "./Components/footer";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Projects from "./Components/Projects";
+import { useLanguage } from "./context/LanguageContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,10 +43,21 @@ function App() {
       </div>
 
       <Navbar />
-      <Hero />
-      <Aboutme />
-      <Projects />
-      <Contact />
+      
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={language}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -15 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <Hero />
+          <Aboutme />
+          <Projects />
+          <Contact />
+        </motion.main>
+      </AnimatePresence>
       
       {/* Floating WhatsApp Action Button */}
       <a
@@ -58,7 +72,7 @@ function App() {
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.072 1.592 5.428.001 9.845-4.417 9.848-9.846.002-2.63-1.02-5.101-2.871-6.955-1.852-1.854-4.324-2.876-6.954-2.877-5.43 0-9.848 4.417-9.851 9.847-.001 1.897.513 3.475 1.559 5.002l-.993 3.628 3.72-.976zm11.332-6.84c-.272-.137-1.614-.797-1.863-.888-.249-.09-.43-.137-.61.137-.18.272-.699.888-.857 1.07-.158.18-.317.204-.589.068-.272-.137-1.149-.423-2.19-1.353-.809-.721-1.355-1.613-1.513-1.886-.159-.273-.017-.42.12-.556.122-.122.272-.318.408-.477.136-.159.182-.272.272-.454.09-.181.045-.34-.023-.477-.068-.137-.61-1.472-.836-2.016-.22-.53-.44-.457-.61-.466-.157-.008-.339-.009-.521-.009-.18 0-.476.068-.724.34-.249.272-.951.93-0.951 2.268s.973 2.632 1.109 2.814c.136.182 1.914 2.923 4.638 4.103.648.281 1.153.448 1.547.573.651.207 1.243.178 1.71.108.522-.078 1.614-.659 1.841-1.295.226-.636.226-1.181.158-1.295-.068-.115-.249-.204-.522-.34z"/>
           </svg>
         </span>
-        <span className="hidden md:inline text-xs font-bold uppercase tracking-wider pl-1 pr-2">Chat with Me</span>
+        <span className="hidden md:inline text-xs font-bold uppercase tracking-wider ps-1 pe-2">{t("chatWithMe")}</span>
       </a>
 
       <ScrollToTop />

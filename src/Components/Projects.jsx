@@ -8,11 +8,18 @@ import todoImage from "/Images/todo.png";
 import newsImage from "/Images/news.jpg";
 import candyImage from "/Images/candy.png";
 import responsiveImage from "/Images/responsive.png";
+import { useLanguage } from "../context/LanguageContext";
 
 const Projects = () => {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const categories = ["All", "E-Commerce & API", "Utility", "UI/UX & Dashboards"];
+  const categories = [
+    { id: "All", label: t("filterAll") },
+    { id: "E-Commerce & API", label: t("filterEcommerce") },
+    { id: "Utility", label: t("filterUtility") },
+    { id: "UI/UX & Dashboards", label: t("filterUIUX") },
+  ];
 
   const accentColors = {
     indigo: "text-indigo-300 border-indigo-500/20 bg-indigo-500/5",
@@ -26,9 +33,8 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      name: "BMI Calculator",
-      description:
-        "BmiApp is a Flutter application that calculates Body Mass Index (BMI) based on user input for height and weight.",
+      name: t("projBmiName"),
+      description: t("projBmiDesc"),
       image: bmiImage,
       github: "https://github.com/atefElhamsa/bmi_app",
       tags: ["Flutter", "Dart", "UI/UX"],
@@ -39,9 +45,8 @@ const Projects = () => {
     },
     {
       id: 2,
-      name: "Quiz App",
-      description:
-        "Interactive quiz app developed, offering multiple-choice questions, and tracking user scores.",
+      name: t("projQuizName"),
+      description: t("projQuizDesc"),
       image: quizImage,
       github: "https://github.com/atefElhamsa/Quiz-App",
       tags: ["Flutter", "Dart", "Local State"],
@@ -52,9 +57,8 @@ const Projects = () => {
     },
     {
       id: 3,
-      name: "Note App (Todo)",
-      description:
-        "A simple note-taking app built using Flutter, allowing users to create, save, archive, and manage notes efficiently.",
+      name: t("projTodoName"),
+      description: t("projTodoDesc"),
       image: todoImage,
       github: "https://github.com/atefElhamsa/todo-app",
       tags: ["Flutter", "Dart", "Database"],
@@ -65,9 +69,8 @@ const Projects = () => {
     },
     {
       id: 4,
-      name: "NewsApp (News wave)",
-      description:
-        "A news aggregator app was built using Api, fetching, and displaying the latest headlines from various sources.",
+      name: t("projNewsName"),
+      description: t("projNewsDesc"),
       image: newsImage,
       github: "https://github.com/atefElhamsa/News-App",
       tags: ["Flutter", "REST API", "JSON Serialization"],
@@ -78,9 +81,8 @@ const Projects = () => {
     },
     {
       id: 5,
-      name: "E-commerce App (MrCandy)",
-      description:
-        "A feature-rich mobile application built using Flutter with Api for seamless online shopping experiences. It includes user authentication, product browsing, cart management, and order processing functionalities.",
+      name: t("projCandyName"),
+      description: t("projCandyDesc"),
       image: candyImage,
       github: "https://github.com/atefElhamsa/Mr-Candy-App",
       tags: ["Flutter", "REST API", "State Management", "Auth"],
@@ -91,9 +93,8 @@ const Projects = () => {
     },
     {
       id: 6,
-      name: "Responsive Dashboard App",
-      description:
-        "A responsive dashboard application built using Flutter, featuring adaptive layouts and interactive components for an optimal user experience across devices.",
+      name: t("projDashName"),
+      description: t("projDashDesc"),
       image: responsiveImage,
       github: "https://github.com/atefElhamsa/responsive_app",
       tags: ["Flutter", "Responsive Design", "Custom Layouts"],
@@ -109,7 +110,7 @@ const Projects = () => {
     : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section className="py-24 bg-slate-955 text-white relative overflow-hidden" id="projects">
+    <section className="py-24 bg-slate-950 text-white relative overflow-hidden" id="projects">
       {/* Decorative radial gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.04),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(168,85,247,0.04),transparent_50%)]" />
@@ -123,13 +124,13 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">My Work</h2>
+          <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">{t("myWork")}</h2>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white relative inline-block">
-            Featured Projects
+            {t("featuredProjects")}
             <span className="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-indigo-500 rounded-full" />
           </h1>
           <p className="text-slate-400 text-sm md:text-base mt-6 max-w-xl mx-auto">
-            A curation of mobile applications developed with Flutter, demonstrating state management, API integration, responsiveness, and polished user interfaces.
+            {t("projectsDesc")}
           </p>
         </motion.div>
 
@@ -137,22 +138,22 @@ const Projects = () => {
         <div className="flex flex-wrap items-center justify-center gap-3 mb-16 relative z-10">
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
+              key={cat.id}
+              onClick={() => setActiveFilter(cat.id)}
               className={`relative px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 overflow-hidden cursor-pointer ${
-                activeFilter === cat
+                activeFilter === cat.id
                   ? "text-white shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
                   : "text-slate-400 hover:text-slate-200 bg-slate-900/40 hover:bg-slate-900/60 border border-slate-900/80 hover:border-slate-800/80"
               }`}
             >
-              {activeFilter === cat && (
+              {activeFilter === cat.id && (
                 <motion.span
                   layoutId="activeFilterPill"
                   className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 -z-10"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -227,14 +228,14 @@ const Projects = () => {
                   </div>
 
                   {/* Buttons Action */}
-                  <div className="flex space-x-2.5 pt-2">
+                  <div className="flex gap-2.5 pt-2">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center px-3.5 py-1.5 bg-slate-950/80 border border-slate-800 hover:border-indigo-500/40 hover:bg-indigo-500/10 text-slate-350 hover:text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
                     >
-                      <FaGithub className="mr-1.5 text-sm group-hover/btn:scale-110 transition-transform" /> Code
+                      <FaGithub className="me-1.5 text-sm group-hover/btn:scale-110 transition-transform" /> {t("btnCode")}
                     </a>
 
                     {project.livedemo && (
@@ -244,7 +245,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="flex items-center px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-550 text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
                       >
-                        <FaExternalLinkAlt className="mr-1.5 text-[9px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" /> Demo
+                        <FaExternalLinkAlt className="me-1.5 text-[9px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" /> {t("btnDemo")}
                       </a>
                     )}
                   </div>

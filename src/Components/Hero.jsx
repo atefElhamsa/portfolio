@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
@@ -6,8 +5,11 @@ import dartIcon from "/Images/dart-icon.svg";
 import flutterIcon from "/Images/flutter-icon.svg";
 import cv from "/CV/Atef_Elhamsa_CV.pdf";
 import myPhoto from "/Images/myPhoto.jpg";
+import { useLanguage } from "../context/LanguageContext";
 
 const Hero = () => {
+  const { t, language } = useLanguage();
+
   return (
     <section
       id="home"
@@ -19,7 +21,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30" />
 
       {/* Hero Left Content */}
-      <div className="relative z-10 max-w-xl space-y-6 text-center md:text-left flex flex-col items-center md:items-start order-2 md:order-1 mt-10 md:mt-0">
+      <div className="relative z-10 max-w-xl space-y-6 text-center md:text-start flex flex-col items-center md:items-start order-2 md:order-1 mt-10 md:mt-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,7 +32,7 @@ const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          Available for Opportunities
+          {t("availableOpportunities")}
         </motion.div>
 
         <motion.h1
@@ -39,9 +41,9 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="text-xl md:text-2xl font-light text-slate-400 block mb-2">I'm</span>
+          <span className="text-xl md:text-2xl font-light text-slate-400 block mb-2">{t("im")}</span>
           <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent drop-shadow-md">
-            Atef Elhamsa
+            {t("name")}
           </span>
         </motion.h1>
 
@@ -50,10 +52,16 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
+          key={language} // Remount typewriter on language switch to update values
         >
           <span className="text-indigo-400">&gt; </span>
           <Typewriter
-            words={["A Flutter Developer", "Flutter Instructor", "UI/UX Designer", "Mobile Specialist"]}
+            words={[
+              t("typewriterFlutterDev"),
+              t("typewriterInstructor"),
+              t("typewriterUIUX"),
+              t("typewriterMobileSpec")
+            ]}
             loop
             cursor
             cursorStyle="|"
@@ -70,7 +78,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Crafting high-performance, beautiful cross-platform mobile experiences with Flutter, Dart, and state-of-the-art UI architectures.
+          {t("heroDesc")}
         </motion.p>
 
         {/* Tech Stack Mini Badge */}
@@ -80,7 +88,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <span className="text-sm text-slate-500 font-medium uppercase tracking-wider">Tech Stack:</span>
+          <span className="text-sm text-slate-500 font-medium uppercase tracking-wider">{t("techStack")}</span>
           <div className="flex gap-3">
             <div className="group relative bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-2.5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-cyan-500/10 hover:-translate-y-0.5">
               <img src={dartIcon} alt="Dart" className="w-6 h-6 transition-transform group-hover:scale-110" />
@@ -100,17 +108,17 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-start">
             <span className="block text-2xl md:text-3xl font-extrabold text-cyan-400">6+</span>
-            <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight block mt-1">Completed Projects</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight block mt-1">{t("completedProjects")}</span>
           </div>
-          <div className="text-center md:text-left border-x border-slate-900 px-4">
+          <div className="text-center md:text-start border-x border-slate-900 px-4">
             <span className="block text-2xl md:text-3xl font-extrabold text-indigo-400">ITI / NTI</span>
-            <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight block mt-1">Certified Specialist</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight block mt-1">{t("certifiedSpecialist")}</span>
           </div>
-          <div className="text-center md:text-left">
-            <span className="block text-2xl md:text-3xl font-extrabold text-purple-400">Active</span>
-            <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight block mt-1">Flutter Instructor</span>
+          <div className="text-center md:text-start">
+            <span className="block text-2xl md:text-3xl font-extrabold text-purple-400">{t("active")}</span>
+            <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight block mt-1">{t("activeInstructor")}</span>
           </div>
         </motion.div>
 
@@ -127,14 +135,14 @@ const Hero = () => {
             rel="noopener noreferrer"
             className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-indigo-500/25 hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-200 text-center"
           >
-            View CV
+            {t("viewCv")}
           </a>
 
           <a
             href="#contact"
             className="px-8 py-3.5 border border-slate-850 hover:border-indigo-500/50 bg-slate-900/60 hover:bg-indigo-500/10 text-slate-350 hover:text-white font-semibold rounded-xl shadow-md hover:-translate-y-0.5 transition-all duration-200 text-center"
           >
-            Contact Me
+            {t("contactMe")}
           </a>
         </motion.div>
       </div>
@@ -156,7 +164,7 @@ const Hero = () => {
           <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-2 border-indigo-500/50 p-1.5 bg-slate-950">
             <motion.img
               src={myPhoto}
-              alt="Atef Elhamsa"
+              alt={t("name")}
               className="rounded-full w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
               animate={{
                 y: [0, -8, 0],
@@ -175,7 +183,7 @@ const Hero = () => {
       {/* Scroll Down Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block">
         <a href="#about" className="flex flex-col items-center gap-2 text-slate-500 hover:text-indigo-400 transition-colors">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Scroll Down</span>
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold">{t("scrollDown")}</span>
           <div className="w-[24px] h-[40px] rounded-full border-2 border-slate-700 p-1 flex justify-center">
             <motion.div
               className="w-1.5 h-1.5 bg-indigo-500 rounded-full"

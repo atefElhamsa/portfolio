@@ -36,6 +36,17 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
+/* Custom styling overrides for Arabic */
+html[lang="ar"], html[lang="ar"] body {
+  font-family: 'Cairo', sans-serif;
+}
+
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] h5, html[lang="ar"] h6 {
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 0;
+}
+
+
 /* Shimmer card hover effect */
 .hover-shimmer {
   position: relative;

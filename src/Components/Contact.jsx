@@ -12,8 +12,11 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -30,13 +33,13 @@ const Contact = () => {
         className="relative z-10 max-w-6xl mx-auto"
       >
         <div className="text-center mb-16">
-          <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">Get In Touch</h2>
+          <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">{t("getInTouch")}</h2>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white relative inline-block">
-            Contact Me
+            {t("contactMeTitle")}
             <span className="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-indigo-550 rounded" />
           </h1>
           <p className="text-slate-400 text-sm md:text-base mt-6 max-w-xl mx-auto">
-            Have a project in mind, a job opportunity, or just want to say hello? Drop a message below or reach out via social channels.
+            {t("contactDesc")}
           </p>
         </div>
 
@@ -49,7 +52,7 @@ const Contact = () => {
                 <FaEnvelope className="text-2xl" />
               </span>
               <div>
-                <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">Email</h3>
+                <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">{t("email")}</h3>
                 <a
                   href="mailto:atefelhamsa79@gmail.com"
                   className="text-slate-200 hover:text-indigo-400 font-medium transition-colors break-all text-sm md:text-base"
@@ -65,7 +68,7 @@ const Contact = () => {
                 <FaPhone className="text-2xl" />
               </span>
               <div>
-                <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">Phone</h3>
+                <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">{t("phone")}</h3>
                 <a
                   href="tel:+201552946586"
                   className="text-slate-200 hover:text-emerald-405 font-medium transition-colors text-sm md:text-base"
@@ -77,18 +80,18 @@ const Contact = () => {
 
             {/* Location Card */}
             <div className="group hover-shimmer flex items-center gap-4 bg-slate-900/40 border border-slate-900 hover:border-rose-500/30 p-5 rounded-2xl shadow-lg transition-all duration-300 hover:bg-slate-900/70 hover:shadow-[0_0_15px_rgba(244,63,94,0.06)] hover:-translate-y-1">
-              <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-rose-500/10 text-rose-450 group-hover:bg-rose-500/20 group-hover:text-rose-400 transition-colors">
+              <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-rose-500/10 text-rose-455 group-hover:bg-rose-500/20 group-hover:text-rose-400 transition-colors">
                 <FaMapMarkerAlt className="text-2xl" />
               </span>
               <div>
-                <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">Location</h3>
-                <p className="text-slate-200 font-medium text-sm md:text-base">Tanta, Egypt</p>
+                <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">{t("location")}</h3>
+                <p className="text-slate-200 font-medium text-sm md:text-base">{t("tantaEgyptLoc")}</p>
               </div>
             </div>
 
             {/* Social Grid Card */}
             <div className="hover-shimmer bg-slate-900/30 border border-slate-900/80 p-6 rounded-2xl shadow-lg">
-              <h3 className="font-bold text-xs text-slate-500 uppercase tracking-[0.2em] mb-4 text-center">Connect with me</h3>
+              <h3 className="font-bold text-xs text-slate-500 uppercase tracking-[0.2em] mb-4 text-center">{t("connectWithMe")}</h3>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="https://www.facebook.com/atef.elhamsa.7"
@@ -118,7 +121,7 @@ const Contact = () => {
                   href="https://wa.me/201552946586"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-950 border border-slate-900 hover:border-green-500/50 hover:bg-green-500/10 hover:text-green-450 text-slate-400 text-xl transition-all duration-200 hover:-translate-y-1"
+                  className="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-950 border border-slate-900 hover:border-green-500/50 hover:bg-green-500/10 hover:text-green-455 text-slate-400 text-xl transition-all duration-200 hover:-translate-y-1"
                 >
                   <FaWhatsapp />
                 </a>
@@ -141,34 +144,34 @@ const Contact = () => {
             className="md:col-span-3 bg-slate-900/40 border border-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl space-y-6"
           >
             <div className="flex flex-col">
-              <label className="mb-2 text-xs font-semibold text-slate-450 uppercase tracking-wider">Name</label>
+              <label className="mb-2 text-xs font-semibold text-slate-450 uppercase tracking-wider">{t("formName")}</label>
               <input
                 type="text"
                 name="name"
                 required
-                placeholder="Enter your name"
+                placeholder={t("formNamePlaceholder")}
                 className="p-3.5 rounded-xl bg-slate-950 border border-slate-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder:text-slate-700 text-sm focus:outline-none transition-all duration-300"
               />
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-2 text-xs font-semibold text-slate-455 uppercase tracking-wider">Email</label>
+              <label className="mb-2 text-xs font-semibold text-slate-455 uppercase tracking-wider">{t("formEmail")}</label>
               <input
                 type="email"
                 name="_replyto"
                 required
-                placeholder="Enter your email"
+                placeholder={t("formEmailPlaceholder")}
                 className="p-3.5 rounded-xl bg-slate-950 border border-slate-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder:text-slate-700 text-sm focus:outline-none transition-all duration-300"
               />
             </div>
 
             <div className="flex flex-col">
-              <label className="mb-2 text-xs font-semibold text-slate-450 uppercase tracking-wider">Message</label>
+              <label className="mb-2 text-xs font-semibold text-slate-450 uppercase tracking-wider">{t("formMessage")}</label>
               <textarea
                 name="message"
                 required
                 rows="5"
-                placeholder="Write your message here..."
+                placeholder={t("formMessagePlaceholder")}
                 className="p-3.5 rounded-xl bg-slate-950 border border-slate-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white placeholder:text-slate-700 text-sm focus:outline-none transition-all duration-300 resize-none"
               />
             </div>
@@ -177,9 +180,9 @@ const Contact = () => {
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               type="submit"
-              className="group w-full py-4 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-550 hover:to-purple-550 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/20 transition-all duration-200 text-sm flex items-center justify-center gap-2"
+              className="group w-full py-4 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-550 hover:to-purple-555 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/20 transition-all duration-200 text-sm flex items-center justify-center gap-2"
             >
-              <span>Send Message</span>
+              <span>{t("formSend")}</span>
               <FaPaperPlane className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5 group-hover:-translate-y-1" />
             </motion.button>
           </form>
