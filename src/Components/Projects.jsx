@@ -206,7 +206,7 @@ const Projects = () => {
                   <div className="flex flex-col lg:flex-row min-h-[360px]">
                     {/* ── LEFT: Screenshot Carousel ── */}
                     <div
-                      className="relative w-full lg:w-[46%] shrink-0 bg-slate-950/70 flex flex-col items-center justify-center overflow-hidden p-6 gap-4 border-r border-yellow-500/10"
+                      className="relative w-full lg:w-[54%] shrink-0 bg-slate-950/70 flex flex-col items-center justify-center overflow-hidden py-6 px-3 gap-4 border-r border-yellow-500/10"
                       onMouseEnter={() => { isHovered.current[project.id] = true; }}
                       onMouseLeave={() => { isHovered.current[project.id] = false; }}
                     >
@@ -222,21 +222,19 @@ const Projects = () => {
 
                       {/* Main screenshot with frame */}
                       <div className="relative z-10 w-full flex items-center justify-center">
-                        <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/8 ring-1 ring-yellow-400/10">
-                          <AnimatePresence mode="wait">
-                            <motion.img
-                              key={activeScreenshot[project.id] ?? 0}
-                              src={getScreenshot(project.id, project.screenshots) || project.image}
-                              alt={project.name}
-                              initial={{ opacity: 0, x: 12 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: -12 }}
-                              transition={{ duration: 0.35, ease: "easeInOut" }}
-                              className="h-[220px] lg:h-[290px] w-auto max-w-full object-contain"
-                              loading="lazy"
-                            />
-                          </AnimatePresence>
-                        </div>
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={activeScreenshot[project.id] ?? 0}
+                            src={getScreenshot(project.id, project.screenshots) || project.image}
+                            alt={project.name}
+                            initial={{ opacity: 0, x: 12 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -12 }}
+                            transition={{ duration: 0.35, ease: "easeInOut" }}
+                            className="h-[250px] lg:h-[350px] w-auto max-w-full object-contain"
+                            loading="lazy"
+                          />
+                        </AnimatePresence>
                       </div>
 
                       {/* Dots + progress bar */}
@@ -246,11 +244,10 @@ const Projects = () => {
                             <button
                               key={i}
                               onClick={() => setActiveScreenshot(prev => ({ ...prev, [project.id]: i }))}
-                              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                                (activeScreenshot[project.id] ?? 0) === i
-                                  ? "bg-yellow-400 w-6 shadow-[0_0_8px_rgba(234,179,8,0.6)]"
-                                  : "bg-slate-700 hover:bg-slate-500 w-1.5"
-                              }`}
+                              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${(activeScreenshot[project.id] ?? 0) === i
+                                ? "bg-yellow-400 w-6 shadow-[0_0_8px_rgba(234,179,8,0.6)]"
+                                : "bg-slate-700 hover:bg-slate-500 w-1.5"
+                                }`}
                             />
                           ))}
                         </div>
