@@ -9,10 +9,10 @@ const translations = {
     navProjects: "Projects",
     navContact: "Contact me",
     navTitle: "Navigation",
-    
+
     // Floating Action WhatsApp
     chatWithMe: "Chat with Me",
-    
+
     // Hero
     availableOpportunities: "Available for Opportunities",
     im: "I'm",
@@ -38,7 +38,7 @@ const translations = {
     expEducation: "Experience & Education",
     myTechStack: "My Tech Stack",
     techStackDesc: "A specialized toolkit focused on creating ultra-performance, pixel-perfect mobile applications and fast-loading web interfaces.",
-    
+
     // Timeline
     timelineItiDate: "July 2025 – August 2025",
     timelineNtiDate: "May 2025 – July 2025",
@@ -53,7 +53,7 @@ const translations = {
     roleInstructor: "Instructor",
     roleDev: "Mobile App Developer using Flutter",
     teachingFlutter: "Teaching Mobile App Development using Flutter",
-    
+
     // Projects
     myWork: "My Work",
     featuredProjects: "Featured Projects",
@@ -64,7 +64,9 @@ const translations = {
     filterUIUX: "UI/UX & Dashboards",
     btnCode: "Code",
     btnDemo: "Demo",
-    
+    btnDownload: "Try for Windows",
+    techStackLabel: "Tech Stack:",
+
     // Project Names & Descriptions
     projBmiName: "BMI Calculator",
     projBmiDesc: "BmiApp is a Flutter application that calculates Body Mass Index (BMI) based on user input for height and weight.",
@@ -78,7 +80,9 @@ const translations = {
     projCandyDesc: "A feature-rich mobile application built using Flutter with Api for seamless online shopping experiences. It includes user authentication, product browsing, cart management, and order processing functionalities.",
     projDashName: "Responsive Dashboard App",
     projDashDesc: "A responsive dashboard application built using Flutter, featuring adaptive layouts and interactive components for an optimal user experience across devices.",
-    
+    projQualiverseName: "Qualiverse — AI-Powered Accreditation System",
+    projQualiverseDesc: "An enterprise-grade Flutter Desktop application built to automate academic accreditation using AI. It streamlines complex reporting, smart evidence management, and role-based workflows for higher education. Architected with Clean Architecture and BLoC, the app features robust state management, proactive token refresh logic, full localization (RTL/LTR), and responsive dashboards, showcasing a deep understanding of scalable software engineering.",
+
     // Contact
     getInTouch: "Get In Touch",
     contactMeTitle: "Contact Me",
@@ -95,7 +99,7 @@ const translations = {
     formMessage: "Message",
     formMessagePlaceholder: "Write your message here...",
     formSend: "Send Message",
-    
+
     // Footer
     allRightsReserved: "All rights reserved.",
     footerBuiltWith: "Built with React & Tailwind CSS • Crafted with care",
@@ -108,10 +112,10 @@ const translations = {
     navProjects: "المشاريع",
     navContact: "اتصل بي",
     navTitle: "التنقل",
-    
+
     // Floating Action WhatsApp
     chatWithMe: "تحدث معي",
-    
+
     // Hero
     availableOpportunities: "متاح لفرص العمل",
     im: "أنا",
@@ -137,7 +141,7 @@ const translations = {
     expEducation: "الخبرة والتعليم",
     myTechStack: "المهارات والتقنيات",
     techStackDesc: "مجموعة أدوات متخصصة تركز على إنشاء تطبيقات هاتف فائقة الأداء ومثالية البكسل وواجهات ويب سريعة التحميل.",
-    
+
     // Timeline
     timelineItiDate: "يوليو 2025 – أغسطس 2025",
     timelineNtiDate: "مايو 2025 – يوليو 2025",
@@ -152,7 +156,7 @@ const translations = {
     roleInstructor: "محاضر",
     roleDev: "مطور تطبيقات هاتف باستخدام Flutter",
     teachingFlutter: "تدريس تطوير تطبيقات الهاتف باستخدام Flutter",
-    
+
     // Projects
     myWork: "أعمالي",
     featuredProjects: "المشاريع المميزة",
@@ -163,7 +167,9 @@ const translations = {
     filterUIUX: "واجهات ولوحات تحكم",
     btnCode: "الكود",
     btnDemo: "عرض حي",
-    
+    btnDownload: "جرب التطبيق (Windows)",
+    techStackLabel: "التقنيات:",
+
     // Project Names & Descriptions
     projBmiName: "حاسبة كتلة الجسم",
     projBmiDesc: "تطبيق BmiApp هو تطبيق Flutter يحسب مؤشر كتلة الجسم (BMI) بناءً على مدخلات الطول والوزن من المستخدم.",
@@ -177,7 +183,9 @@ const translations = {
     projCandyDesc: "تطبيق هاتف متكامل للتجارة الإلكترونية تم بناؤه بـ Flutter و API لتوفير تجربة تسوق سلسة. يشمل التوثيق، تصفح المنتجات، السلة، والطلبات.",
     projDashName: "لوحة تحكم متجاوبة",
     projDashDesc: "تطبيق لوحة تحكم متجاوبة باستخدام Flutter، يتميز بتخطيطات متكيفة ومكونات تفاعلية لتجربة مستخدم مثالية على جميع الأجهزة.",
-    
+    projQualiverseName: "Qualiverse — نظام اعتماد أكاديمي بالذكاء الاصطناعي",
+    projQualiverseDesc: "تطبيق سطح مكتب متقدم (Desktop App) تم تطويره باستخدام Flutter لأتمتة عمليات الاعتماد الأكاديمي وضمان الجودة في الجامعات بالاعتماد على الذكاء الاصطناعي. يدير التطبيق نظام صلاحيات معقد، ورفع الملفات الكبيرة، ولوحات تحكم تفاعلية. تم بناء المشروع باستخدام Clean Architecture و BLoC، مع تطبيق آليات حماية متقدمة مثل (Proactive Token Refresh) لضمان استقرار الجلسات، مما يعكس القدرة على بناء أنظمة برمجية ضخمة وقابلة للتوسع.",
+
     // Contact
     getInTouch: "تواصل معي",
     contactMeTitle: "اتصل بي",
@@ -194,7 +202,7 @@ const translations = {
     formMessage: "الرسالة",
     formMessagePlaceholder: "اكتب رسالتك هنا...",
     formSend: "إرسال الرسالة",
-    
+
     // Footer
     allRightsReserved: "جميع الحقوق محفوظة.",
     footerBuiltWith: "بني باستخدام React & Tailwind CSS • صنع بكل حب وعناية",
@@ -229,7 +237,7 @@ export const LanguageProvider = ({ children }) => {
     const dir = language === "ar" ? "rtl" : "ltr";
     document.documentElement.dir = dir;
     document.documentElement.lang = language;
-    
+
     // Smooth scroll to top when language changes
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [language]);

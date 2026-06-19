@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import React, { useState, useEffect, useRef } from "react";
+import { FaGithub, FaExternalLinkAlt, FaDownload, FaStar } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import bmiImage from "/Images/bmi.png";
 import quizImage from "/Images/quiz.png";
@@ -8,18 +8,15 @@ import todoImage from "/Images/todo.png";
 import newsImage from "/Images/news.jpg";
 import candyImage from "/Images/candy.png";
 import responsiveImage from "/Images/responsive.png";
+import loginImg from "/Images/login.png";
+import coursesImg from "/Images/course_files_page.png";
+import dashboardImg from "/Images/dashboard.png";
+import aiModelImg from "/Images/ai.png";
+import adminDashImg from "/Images/admin_dashboard.png";
 import { useLanguage } from "../context/LanguageContext";
 
 const Projects = () => {
   const { t } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const categories = [
-    { id: "All", label: t("filterAll") },
-    { id: "E-Commerce & API", label: t("filterEcommerce") },
-    { id: "Utility", label: t("filterUtility") },
-    { id: "UI/UX & Dashboards", label: t("filterUIUX") },
-  ];
 
   const accentColors = {
     indigo: "text-indigo-300 border-indigo-500/20 bg-indigo-500/5",
@@ -28,11 +25,27 @@ const Projects = () => {
     sky: "text-sky-300 border-sky-500/20 bg-sky-500/5",
     pink: "text-pink-300 border-pink-500/20 bg-pink-500/5",
     emerald: "text-emerald-300 border-emerald-500/20 bg-emerald-500/5",
+    yellow: "text-yellow-300 border-yellow-500/20 bg-yellow-500/5",
   };
 
   const projects = [
     {
       id: 1,
+      name: t("projQualiverseName"),
+      description: t("projQualiverseDesc"),
+      image: loginImg,
+      screenshots: [loginImg, coursesImg, dashboardImg, aiModelImg, adminDashImg],
+      github: "https://github.com/QualiVerse/QualiVerse-qualiverse-frontend",
+      downloadLink: "https://github.com/atefElhamsa/qualiverse_update/releases/latest/download/qualiverse_setup.exe",
+      tags: ["Flutter Desktop", "Dart", "BLoC", "Clean Architecture", "GoRouter", "Dio (Interceptors & Token Refresh)"],
+      category: "UI/UX & Dashboards",
+      featured: true,
+      glowColor: "hover:shadow-[0_20px_60px_rgba(234,179,8,0.25)] hover:border-yellow-400/40",
+      glowBg: "rgba(234,179,8,0.08)",
+      accentColor: "yellow",
+    },
+    {
+      id: 2,
       name: t("projBmiName"),
       description: t("projBmiDesc"),
       image: bmiImage,
@@ -44,19 +57,19 @@ const Projects = () => {
       accentColor: "indigo",
     },
     {
-      id: 2,
+      id: 3,
       name: t("projQuizName"),
       description: t("projQuizDesc"),
       image: quizImage,
       github: "https://github.com/atefElhamsa/Quiz-App",
       tags: ["Flutter", "Dart", "Local State"],
-      category: "UI/UX & Dashboards",
+      category: "Utility",
       glowColor: "hover:shadow-[0_20px_50px_rgba(168,85,247,0.15)] hover:border-purple-500/30",
       glowBg: "rgba(168,85,247,0.06)",
       accentColor: "purple",
     },
     {
-      id: 3,
+      id: 4,
       name: t("projTodoName"),
       description: t("projTodoDesc"),
       image: todoImage,
@@ -68,7 +81,7 @@ const Projects = () => {
       accentColor: "blue",
     },
     {
-      id: 4,
+      id: 5,
       name: t("projNewsName"),
       description: t("projNewsDesc"),
       image: newsImage,
@@ -80,7 +93,7 @@ const Projects = () => {
       accentColor: "sky",
     },
     {
-      id: 5,
+      id: 6,
       name: t("projCandyName"),
       description: t("projCandyDesc"),
       image: candyImage,
@@ -92,7 +105,7 @@ const Projects = () => {
       accentColor: "pink",
     },
     {
-      id: 6,
+      id: 7,
       name: t("projDashName"),
       description: t("projDashDesc"),
       image: responsiveImage,
@@ -105,9 +118,33 @@ const Projects = () => {
     },
   ];
 
-  const filteredProjects = activeFilter === "All"
-    ? projects
-    : projects.filter((p) => p.category === activeFilter);
+
+  // Screenshot carousel state + auto-play
+  const [activeScreenshot, setActiveScreenshot] = useState({});
+  const isHovered = useRef({});
+
+  const getScreenshot = (id, screenshots) => {
+    const idx = activeScreenshot[id] ?? 0;
+    return screenshots ? screenshots[idx] : null;
+  };
+
+  // Auto-advance every 3 seconds for all featured projects
+  useEffect(() => {
+    const featuredProjects = projects.filter(p => p.featured && p.screenshots);
+    const intervals = featuredProjects.map(project => {
+      return setInterval(() => {
+        if (!isHovered.current[project.id]) {
+          setActiveScreenshot(prev => {
+            const current = prev[project.id] ?? 0;
+            const next = (current + 1) % project.screenshots.length;
+            return { ...prev, [project.id]: next };
+          });
+        }
+      }, 3000);
+    });
+    return () => intervals.forEach(clearInterval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className="py-24 bg-slate-950 text-white relative overflow-hidden" id="projects">
@@ -134,29 +171,6 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-16 relative z-10">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveFilter(cat.id)}
-              className={`relative px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 overflow-hidden cursor-pointer ${
-                activeFilter === cat.id
-                  ? "text-white shadow-[0_4px_20px_rgba(99,102,241,0.25)]"
-                  : "text-slate-400 hover:text-slate-200 bg-slate-900/40 hover:bg-slate-900/60 border border-slate-900/80 hover:border-slate-800/80"
-              }`}
-            >
-              {activeFilter === cat.id && (
-                <motion.span
-                  layoutId="activeFilterPill"
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 -z-10"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-              {cat.label}
-            </button>
-          ))}
-        </div>
 
         {/* Cards Grid with layout transition */}
         <motion.div
@@ -164,93 +178,253 @@ const Projects = () => {
           className="grid grid-cols-1 lg:grid-cols-2 gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.4 }}
-                className={`group bg-slate-900/40 border border-slate-900/80 hover:border-indigo-500/25 rounded-2xl overflow-hidden shadow-xl ${project.glowColor} transition-all duration-300 flex flex-row h-[250px] sm:h-[280px] p-3 sm:p-4 gap-4 relative`}
-              >
-                {/* Subtle dynamic background color glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at center, ${project.glowBg} 0%, transparent 70%)`
-                  }}
-                />
-
-                {/* Left Side: Screenshot Media Area */}
-                <div className="w-[100px] sm:w-[120px] h-full shrink-0 rounded-xl overflow-hidden bg-slate-950/50 flex items-center justify-center relative border border-slate-900/50">
-                  {/* Blurred Background Screenshot */}
-                  <img
-                    src={project.image}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover blur-xl opacity-20 pointer-events-none scale-105"
+            {projects.map((project) => (
+              project.featured ? (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 24 }}
+                  transition={{ duration: 0.5 }}
+                  className={`group lg:col-span-2 relative rounded-3xl overflow-hidden border border-yellow-500/25 bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-slate-950/90 ${project.glowColor} shadow-2xl transition-all duration-500`}
+                >
+                  {/* Ambient glow on hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: `radial-gradient(ellipse at 20% 60%, ${project.glowBg} 0%, transparent 60%)` }}
                   />
-                  {/* Dark overlay for contrast */}
-                  <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
+                  {/* Subtle dot-grid texture */}
+                  <div className="absolute inset-0 opacity-[0.025] pointer-events-none"
+                    style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
-                  {/* Sharp Floating Screenshot */}
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="relative h-[95%] w-auto object-contain rounded-lg shadow-xl z-10 transition-transform duration-500 group-hover:scale-103"
-                    loading="lazy"
-                  />
-                </div>
+                  {/* Top golden shimmer line */}
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-400/70 to-transparent" />
+                  {/* Bottom subtle line */}
+                  <div className="absolute bottom-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
 
-                {/* Right Side: Project Card Content */}
-                <div className="flex flex-col justify-between flex-grow h-full py-1">
-                  <div>
-                    {/* Tags List */}
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      {project.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className={`text-[8px] sm:text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full border ${
-                            accentColors[project.accentColor] || "text-indigo-300 border-indigo-500/20 bg-indigo-500/5"
-                          }`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                  <div className="flex flex-col lg:flex-row min-h-[360px]">
+                    {/* ── LEFT: Screenshot Carousel ── */}
+                    <div
+                      className="relative w-full lg:w-[46%] shrink-0 bg-slate-950/70 flex flex-col items-center justify-center overflow-hidden p-6 gap-4 border-r border-yellow-500/10"
+                      onMouseEnter={() => { isHovered.current[project.id] = true; }}
+                      onMouseLeave={() => { isHovered.current[project.id] = false; }}
+                    >
+                      {/* Blurred bg */}
+                      <img
+                        src={getScreenshot(project.id, project.screenshots) || project.image}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-10 scale-110 pointer-events-none"
+                      />
+                      {/* Corner accent glow */}
+                      <div className="absolute top-0 left-0 w-24 h-24 bg-yellow-400/5 rounded-full blur-2xl pointer-events-none" />
+                      <div className="absolute bottom-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                      {/* Main screenshot with frame */}
+                      <div className="relative z-10 w-full flex items-center justify-center">
+                        <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/8 ring-1 ring-yellow-400/10">
+                          <AnimatePresence mode="wait">
+                            <motion.img
+                              key={activeScreenshot[project.id] ?? 0}
+                              src={getScreenshot(project.id, project.screenshots) || project.image}
+                              alt={project.name}
+                              initial={{ opacity: 0, x: 12 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -12 }}
+                              transition={{ duration: 0.35, ease: "easeInOut" }}
+                              className="h-[220px] lg:h-[290px] w-auto max-w-full object-contain"
+                              loading="lazy"
+                            />
+                          </AnimatePresence>
+                        </div>
+                      </div>
+
+                      {/* Dots + progress bar */}
+                      <div className="relative z-10 flex flex-col items-center gap-2 w-full px-8">
+                        <div className="flex gap-2 items-center">
+                          {project.screenshots.map((scr, i) => (
+                            <button
+                              key={i}
+                              onClick={() => setActiveScreenshot(prev => ({ ...prev, [project.id]: i }))}
+                              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                                (activeScreenshot[project.id] ?? 0) === i
+                                  ? "bg-yellow-400 w-6 shadow-[0_0_8px_rgba(234,179,8,0.6)]"
+                                  : "bg-slate-700 hover:bg-slate-500 w-1.5"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <div className="w-full h-[2px] bg-slate-800/80 rounded-full overflow-hidden">
+                          <motion.div
+                            key={activeScreenshot[project.id] ?? 0}
+                            className="h-full bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full"
+                            initial={{ width: "0%" }}
+                            animate={{ width: "100%" }}
+                            transition={{ duration: 3, ease: "linear" }}
+                          />
+                        </div>
+                      </div>
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 group-hover:text-indigo-400 transition-colors">
-                      {project.name}
-                    </h3>
-                    <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 sm:line-clamp-4 font-normal">
-                      {project.description}
-                    </p>
+                    {/* ── RIGHT: Content ── */}
+                    <div className="flex flex-col justify-between flex-grow p-6 lg:p-8">
+                      <div className="space-y-4">
+                        {/* Crown badge */}
+                        <div className="flex items-center gap-2">
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.18em] bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 shadow-[0_0_12px_rgba(234,179,8,0.1)]">
+                            <FaStar className="text-yellow-400 text-[8px]" /> Graduation Project · AI-Powered
+                          </span>
+                        </div>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className="text-[8px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full border text-yellow-200/80 border-yellow-500/20 bg-yellow-500/5 hover:bg-yellow-500/10 hover:border-yellow-400/30 transition-colors duration-200"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-2xl lg:text-3xl font-extrabold text-white group-hover:text-yellow-300 transition-colors duration-300 leading-tight tracking-tight">
+                          {project.name}
+                        </h3>
+
+                        {/* Separator */}
+                        <div className="w-12 h-[2px] bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full" />
+
+                        {/* Description */}
+                        <p className="text-slate-400 text-[12px] leading-[1.85] font-normal">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex flex-wrap gap-3 pt-6 mt-2 border-t border-slate-800/60">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-5 py-2 bg-slate-950/80 border border-slate-700/60 hover:border-yellow-500/50 hover:bg-yellow-500/8 text-slate-300 hover:text-white rounded-xl shadow-md transition-all duration-300 text-[11px] font-semibold group/btn"
+                        >
+                          <FaGithub className="text-sm group-hover/btn:scale-110 transition-transform" /> {t("btnCode")}
+                        </a>
+                        {project.downloadLink && (
+                          <a
+                            href={project.downloadLink}
+                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-slate-950 font-bold rounded-xl shadow-lg shadow-yellow-500/25 hover:shadow-yellow-400/35 transition-all duration-300 text-[11px] group/btn"
+                          >
+                            <FaDownload className="text-[10px] group-hover/btn:translate-y-[1px] transition-transform" /> {t("btnDownload")}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.4 }}
+                  className={`group bg-slate-900/40 border border-slate-900/80 hover:border-indigo-500/25 rounded-2xl overflow-hidden shadow-xl ${project.glowColor} transition-all duration-300 flex flex-row h-[250px] sm:h-[280px] p-3 sm:p-4 gap-4 relative`}
+                >
+                  {/* Subtle dynamic background color glow */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(circle at center, ${project.glowBg} 0%, transparent 70%)`
+                    }}
+                  />
+
+                  {/* Left Side: Screenshot Media Area */}
+                  <div className="w-[100px] sm:w-[120px] h-full shrink-0 rounded-xl overflow-hidden bg-slate-950/50 flex items-center justify-center relative border border-slate-900/50">
+                    {/* Blurred Background Screenshot */}
+                    <img
+                      src={project.image}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover blur-xl opacity-20 pointer-events-none scale-105"
+                    />
+                    {/* Dark overlay for contrast */}
+                    <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
+
+                    {/* Sharp Floating Screenshot */}
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="relative h-[95%] w-auto object-contain rounded-lg shadow-xl z-10 transition-transform duration-500 group-hover:scale-103"
+                      loading="lazy"
+                    />
                   </div>
 
-                  {/* Buttons Action */}
-                  <div className="flex gap-2.5 pt-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center px-3.5 py-1.5 bg-slate-950/80 border border-slate-800 hover:border-indigo-500/40 hover:bg-indigo-500/10 text-slate-350 hover:text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
-                    >
-                      <FaGithub className="me-1.5 text-sm group-hover/btn:scale-110 transition-transform" /> {t("btnCode")}
-                    </a>
+                  {/* Right Side: Project Card Content */}
+                  <div className="flex flex-col justify-between flex-grow h-full py-1">
+                    <div>
+                      {/* Tags List */}
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {project.tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className={`text-[8px] sm:text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full border ${accentColors[project.accentColor] || "text-indigo-300 border-indigo-500/20 bg-indigo-500/5"
+                              }`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
 
-                    {project.livedemo && (
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 group-hover:text-indigo-400 transition-colors">
+                        {project.name}
+                      </h3>
+                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 sm:line-clamp-4 font-normal">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Buttons Action */}
+                    <div className="flex gap-2.5 pt-2">
                       <a
-                        href={project.livedemo}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-550 text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
+                        className="flex items-center px-3.5 py-1.5 bg-slate-950/80 border border-slate-800 hover:border-indigo-500/40 hover:bg-indigo-500/10 text-slate-350 hover:text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
                       >
-                        <FaExternalLinkAlt className="me-1.5 text-[9px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" /> {t("btnDemo")}
+                        <FaGithub className="me-1.5 text-sm group-hover/btn:scale-110 transition-transform" /> {t("btnCode")}
                       </a>
-                    )}
+
+                      {project.livedemo && (
+                        <a
+                          href={project.livedemo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-550 text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
+                        >
+                          <FaExternalLinkAlt className="me-1.5 text-[9px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" /> {t("btnDemo")}
+                        </a>
+                      )}
+                      {project.downloadLink && (
+                        <a
+                          href={project.downloadLink}
+                          download
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg shadow-md transition-all duration-300 text-[10px] sm:text-xs font-semibold group/btn"
+                        >
+                          <FaDownload className="me-1.5 text-[9px] group-hover/btn:translate-y-[1px] transition-transform" /> {t("btnDownload") || "Download"}
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              )
             ))}
           </AnimatePresence>
         </motion.div>
