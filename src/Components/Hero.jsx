@@ -15,28 +15,28 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 lg:px-32 py-28 md:py-36 bg-slate-950 text-white overflow-hidden"
     >
       {/* Dynamic Animated Background Orbs */}
-      <motion.div 
-        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} 
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] bg-indigo-600/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none" 
+        className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] bg-indigo-600/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }} 
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] bg-cyan-500/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none" 
+        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] bg-cyan-500/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.5, 0.2] }} 
+      <motion.div
+        animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[30vw] h-[30vw] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen pointer-events-none" 
+        className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[30vw] h-[30vw] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
       />
-      
+
       {/* Grid Pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 pointer-events-none" />
 
       {/* Hero Content */}
       <div className="relative z-10 w-full max-w-5xl space-y-8 text-center flex flex-col items-center mt-10 md:mt-0">
-        
+
         {/* Floating Available Badge */}
         <motion.div
           initial={{ opacity: 0, y: -30, scale: 0.8 }}
@@ -66,29 +66,31 @@ const Hero = () => {
 
         {/* Typewriter */}
         <motion.div
-          className="text-2xl md:text-4xl font-bold text-slate-300 min-h-[50px] bg-slate-900/40 backdrop-blur-md inline-block px-8 py-3 rounded-2xl border border-white/5 shadow-xl"
+          className="text-lg sm:text-2xl md:text-4xl font-bold text-slate-300 min-h-[50px] bg-slate-900/40 backdrop-blur-md flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3 rounded-2xl border border-white/5 shadow-xl mx-auto w-fit max-w-[90vw]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          key={language} 
+          key={language}
         >
-          <span className="text-cyan-400 mr-2">{"{ "}</span>
-          <Typewriter
-            words={[
-              t("typewriterFlutterDev"),
-              t("typewriterInstructor"),
-              t("typewriterUIUX"),
-              t("typewriterMobileSpec")
-            ]}
-            loop
-            cursor
-            cursorStyle="_"
-            cursorColor="#22d3ee"
-            typeSpeed={50}
-            deleteSpeed={30}
-            delaySpeed={2000}
-          />
-          <span className="text-cyan-400 ml-2">{" }"}</span>
+          <span className="text-cyan-400 mr-1 sm:mr-2 shrink-0">{"{ "}</span>
+          <div className="whitespace-nowrap overflow-hidden">
+            <Typewriter
+              words={[
+                t("typewriterFlutterDev"),
+                t("typewriterInstructor"),
+                t("typewriterUIUX"),
+                t("typewriterMobileSpec")
+              ]}
+              loop
+              cursor
+              cursorStyle="_"
+              cursorColor="#22d3ee"
+              typeSpeed={50}
+              deleteSpeed={30}
+              delaySpeed={2000}
+            />
+          </div>
+          <span className="text-cyan-400 ml-1 sm:ml-2 shrink-0">{" }"}</span>
         </motion.div>
 
         {/* Description */}
