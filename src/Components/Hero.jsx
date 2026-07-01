@@ -42,9 +42,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: -30, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, type: "spring", stiffness: 200 }}
-          className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-slate-900/50 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.2)] text-indigo-300 text-sm font-bold tracking-widest uppercase hover:bg-slate-800/50 transition-colors cursor-default"
+          className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-slate-900/50 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.2)] text-indigo-300 text-sm font-bold tracking-widest uppercase whitespace-nowrap hover:bg-slate-800/50 transition-colors cursor-default"
         >
-          <span className="relative flex h-3 w-3">
+          <span className="relative flex h-3 w-3 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span>
           </span>
