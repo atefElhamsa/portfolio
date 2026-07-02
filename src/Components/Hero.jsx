@@ -18,17 +18,17 @@ const Hero = () => {
       <motion.div
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] bg-indigo-600/30 rounded-full blur-[120px] mix-blend-screen pointer-events-none"
+        className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(79,70,229,0.3)_0%,transparent_60%)] will-change-transform"
       />
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] bg-cyan-500/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"
+        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(6,182,212,0.2)_0%,transparent_60%)] will-change-transform"
       />
       <motion.div
         animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[30vw] h-[30vw] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
+        className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[30vw] h-[30vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(147,51,234,0.2)_0%,transparent_60%)] will-change-transform"
       />
 
       {/* Grid Pattern overlay */}

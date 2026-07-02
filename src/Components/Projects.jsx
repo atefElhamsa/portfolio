@@ -210,15 +210,12 @@ const Projects = () => {
                       onMouseEnter={() => { isHovered.current[project.id] = true; }}
                       onMouseLeave={() => { isHovered.current[project.id] = false; }}
                     >
-                      {/* Blurred bg */}
-                      <img
-                        src={getScreenshot(project.id, project.screenshots) || project.image}
-                        alt=""
-                        className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-10 scale-110 pointer-events-none"
-                      />
+                      {/* Ambient glow instead of expensive blurred image */}
+                      <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ background: `radial-gradient(circle at center, ${project.glowBg} 0%, transparent 80%)` }} />
+                      
                       {/* Corner accent glow */}
-                      <div className="absolute top-0 left-0 w-24 h-24 bg-yellow-400/5 rounded-full blur-2xl pointer-events-none" />
-                      <div className="absolute bottom-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
+                      <div className="absolute top-0 left-0 w-32 h-32 rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(250,204,21,0.05)_0%,transparent_70%)]" />
+                      <div className="absolute bottom-0 right-0 w-32 h-32 rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(245,158,11,0.05)_0%,transparent_70%)]" />
 
                       {/* Main screenshot with frame */}
                       <div className="relative z-10 w-full flex items-center justify-center">
@@ -344,12 +341,8 @@ const Projects = () => {
 
                   {/* Left Side: Screenshot Media Area */}
                   <div className="w-[100px] sm:w-[120px] h-full shrink-0 rounded-xl overflow-hidden bg-slate-950/50 flex items-center justify-center relative border border-slate-900/50">
-                    {/* Blurred Background Screenshot */}
-                    <img
-                      src={project.image}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover blur-xl opacity-20 pointer-events-none scale-105"
-                    />
+                    {/* Ambient Glow */}
+                    <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ background: `radial-gradient(circle at center, ${project.glowBg} 0%, transparent 80%)` }} />
                     {/* Dark overlay for contrast */}
                     <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
 

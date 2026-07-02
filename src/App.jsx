@@ -37,9 +37,9 @@ function App() {
 
       {/* Floating Ambient Glow Orbs */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="w-[450px] h-[450px] bg-purple-500/10 rounded-full blur-[120px] fixed top-1/4 left-[-100px] animate-float-1" />
-        <div className="w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[150px] fixed bottom-1/4 right-[-150px] animate-float-2" />
-        <div className="w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] fixed top-3/4 left-1/3 animate-float-1" />
+        <div className="w-[450px] h-[450px] rounded-full fixed top-1/4 left-[-100px] animate-float-1 bg-[radial-gradient(circle,rgba(168,85,247,0.15)_0%,transparent_60%)] will-change-transform" />
+        <div className="w-[600px] h-[600px] rounded-full fixed bottom-1/4 right-[-150px] animate-float-2 bg-[radial-gradient(circle,rgba(99,102,241,0.08)_0%,transparent_60%)] will-change-transform" />
+        <div className="w-[350px] h-[350px] rounded-full fixed top-3/4 left-1/3 animate-float-1 bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_60%)] will-change-transform" />
       </div>
 
       <Navbar />
