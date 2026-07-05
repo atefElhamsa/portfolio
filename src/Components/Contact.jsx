@@ -47,36 +47,36 @@ const Contact = () => {
           {/* Info cards (2 columns on md/lg) */}
           <div className="md:col-span-2 space-y-6">
             {/* Email Card */}
-            <div className="group hover-shimmer flex items-center gap-4 bg-slate-900/40 border border-slate-900 hover:border-indigo-500/30 p-5 rounded-2xl shadow-lg transition-all duration-300 hover:bg-slate-900/70 hover:shadow-[0_0_15px_rgba(99,102,241,0.06)] hover:-translate-y-1">
+            <a 
+              href="mailto:atefelhamsa79@gmail.com"
+              className="group hover-shimmer flex items-center gap-4 bg-slate-900/40 border border-slate-900 hover:border-indigo-500/30 p-5 rounded-2xl shadow-lg transition-all duration-300 hover:bg-slate-900/70 hover:shadow-[0_0_15px_rgba(99,102,241,0.06)] hover:-translate-y-1"
+            >
               <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
                 <FaEnvelope className="text-2xl" />
               </span>
               <div>
                 <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">{t("email")}</h3>
-                <a
-                  href="mailto:atefelhamsa79@gmail.com"
-                  className="text-slate-200 hover:text-indigo-400 font-medium transition-colors break-all text-sm md:text-base"
-                >
+                <span className="text-slate-200 group-hover:text-indigo-400 font-medium transition-colors break-all text-sm md:text-base">
                   atefelhamsa79@gmail.com
-                </a>
+                </span>
               </div>
-            </div>
+            </a>
 
             {/* Phone Card */}
-            <div className="group hover-shimmer flex items-center gap-4 bg-slate-900/40 border border-slate-900 hover:border-emerald-500/30 p-5 rounded-2xl shadow-lg transition-all duration-300 hover:bg-slate-900/70 hover:shadow-[0_0_15px_rgba(16,185,129,0.06)] hover:-translate-y-1">
+            <a 
+              href="tel:+201552946586"
+              className="group hover-shimmer flex items-center gap-4 bg-slate-900/40 border border-slate-900 hover:border-emerald-500/30 p-5 rounded-2xl shadow-lg transition-all duration-300 hover:bg-slate-900/70 hover:shadow-[0_0_15px_rgba(16,185,129,0.06)] hover:-translate-y-1"
+            >
               <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 group-hover:text-emerald-300 transition-colors">
                 <FaPhone className="text-2xl" />
               </span>
               <div>
                 <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">{t("phone")}</h3>
-                <a
-                  href="tel:+201552946586"
-                  className="text-slate-200 hover:text-emerald-405 font-medium transition-colors text-sm md:text-base"
-                >
+                <span className="text-slate-200 group-hover:text-emerald-405 font-medium transition-colors text-sm md:text-base">
                   +201552946586
-                </a>
+                </span>
               </div>
-            </div>
+            </a>
 
             {/* Location Card */}
             <div className="group hover-shimmer flex items-center gap-4 bg-slate-900/40 border border-slate-900 hover:border-rose-500/30 p-5 rounded-2xl shadow-lg transition-all duration-300 hover:bg-slate-900/70 hover:shadow-[0_0_15px_rgba(244,63,94,0.06)] hover:-translate-y-1">
@@ -85,7 +85,9 @@ const Contact = () => {
               </span>
               <div>
                 <h3 className="font-bold text-sm text-slate-400 uppercase tracking-wider">{t("location")}</h3>
-                <p className="text-slate-200 font-medium text-sm md:text-base">{t("tantaEgyptLoc")}</p>
+                <span className="text-slate-200 group-hover:text-rose-400 font-medium transition-colors text-sm md:text-base">
+                  {t("tantaEgyptLoc")}
+                </span>
               </div>
             </div>
 

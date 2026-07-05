@@ -49,6 +49,13 @@ const translations = {
     lvlFullIntegration: "Full Integration",
     lvlBackendSetup: "Backend Setup",
     lvlReactiveData: "Reactive Data",
+    lvlSystemDesign: "System Design",
+    lvlLocalStorage: "Local Storage",
+    lvlVersionControl: "Version Control",
+    lvlStateManagement: "State Management",
+    lvlBackendScripts: "Backend & Scripts",
+    lvlAdaptiveLayouts: "Adaptive Layouts",
+    lvlAutomation: "Automation",
     lvlCurrentlyLearning: "Currently Learning",
 
     // Timeline
@@ -164,6 +171,13 @@ const translations = {
     lvlFullIntegration: "دمج كامل",
     lvlBackendSetup: "إعداد الواجهة الخلفية",
     lvlReactiveData: "بيانات تفاعلية",
+    lvlSystemDesign: "تصميم الأنظمة",
+    lvlLocalStorage: "تخزين محلي",
+    lvlVersionControl: "التحكم في الإصدارات",
+    lvlStateManagement: "إدارة الحالة",
+    lvlBackendScripts: "الخلفية والبرمجة النصية",
+    lvlAdaptiveLayouts: "تصميم متكيف",
+    lvlAutomation: "الأتمتة المستمرة",
     lvlCurrentlyLearning: "أتعلمه حالياً",
 
     // Timeline
