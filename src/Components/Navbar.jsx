@@ -70,9 +70,8 @@ const Navbar = () => {
                 <a
                   key={link.id}
                   href={`#${link.id}`}
-                  className={`relative flex items-center gap-2 text-sm font-medium tracking-wide px-4 py-2 rounded-xl transition-all duration-300 group ${
-                    isActive ? "text-white" : "text-slate-400 hover:text-white hover:bg-white/5"
-                  }`}
+                  className={`relative flex items-center gap-2 text-sm font-medium tracking-wide px-4 py-2 rounded-xl transition-all duration-300 group ${isActive ? "text-white" : "text-slate-400 hover:text-white hover:bg-white/5"
+                    }`}
                 >
                   <span className={`transition-transform duration-300 group-hover:scale-110 ${isActive ? 'text-indigo-400 drop-shadow-md' : ''}`}>
                     {link.icon}
@@ -152,11 +151,10 @@ const Navbar = () => {
                       key={link.id}
                       href={`#${link.id}`}
                       onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-4 px-5 py-3.5 rounded-2xl border backdrop-blur-md text-base font-medium transition-all duration-300 ${
-                        isActive
-                          ? "bg-white/10 border-white/20 text-white shadow-[0_4px_20px_rgba(0,0,0,0.1)]"
-                          : "bg-slate-900/40 border-transparent text-slate-400 hover:text-white hover:bg-white/5"
-                      }`}
+                      className={`flex items-center gap-4 px-5 py-3.5 rounded-2xl border backdrop-blur-md text-base font-medium transition-all duration-300 ${isActive
+                        ? "bg-white/10 border-white/20 text-white shadow-[0_4px_20px_rgba(0,0,0,0.1)]"
+                        : "bg-slate-900/40 border-transparent text-slate-400 hover:text-white hover:bg-white/5"
+                        }`}
                     >
                       <span className={`p-2 rounded-xl transition-colors ${isActive ? "bg-indigo-500/20 text-indigo-300" : "bg-slate-800/50 text-slate-400"}`}>
                         {link.icon}
