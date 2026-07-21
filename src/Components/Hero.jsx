@@ -60,9 +60,13 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
         >
           <span className="text-xl md:text-3xl font-semibold text-slate-400 block mb-4 uppercase tracking-[0.2em]">{t("im")}</span>
-          <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-sky-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(99,102,241,0.2)]">
+          <motion.span 
+            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+            transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+            className="bg-[linear-gradient(90deg,#818cf8,#c084fc,#38bdf8,#818cf8)] bg-[length:200%_auto] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(99,102,241,0.2)]"
+          >
             {t("name")}
-          </span>
+          </motion.span>
         </motion.h1>
 
         {/* Typewriter */}

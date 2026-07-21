@@ -2,13 +2,20 @@
 import React, { useState, useEffect } from "react";
 import { Home, User, Mail, Code2, Menu, X } from "lucide-react";
 import { FaTools } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
 const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const navLinks = [
     { id: "home", labelKey: "navHome", icon: <Home className="h-4 w-4" /> },
@@ -26,7 +33,7 @@ const Navbar = () => {
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
-          const top = el.offsetTop;
+          const top = el.getBoundingClientRect().top + window.scrollY;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(section);
@@ -42,6 +49,10 @@ const Navbar = () => {
 
   return (
     <>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 origin-left z-[100]"
+        style={{ scaleX }}
+      />
       <header className="fixed top-0 left-0 w-full z-50 transition-all duration-500 backdrop-blur-xl bg-slate-950/50 border-b border-white/5 py-3 px-6 md:px-12 lg:px-20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo with Gradient Text */}

@@ -130,21 +130,22 @@ const Aboutme = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="relative bg-slate-950 text-white py-24 px-6 md:px-20 lg:px-32 overflow-hidden">
-      
+    <section className="relative bg-slate-950 text-white py-24 px-6 md:px-20 lg:px-32 overflow-hidden">
+
       {/* Decorative radial gradients matching Projects/Contact */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.06),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(99,102,241,0.06),transparent_50%)]" />
 
       <div className="max-w-6xl mx-auto relative z-10 space-y-32">
-        
+
         {/* Intro Section */}
         <motion.div
+          id="about"
+          className="scroll-mt-24 max-w-4xl space-y-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl space-y-6"
         >
           <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">
             {t("aboutTitle")}
@@ -158,7 +159,7 @@ const Aboutme = () => {
           <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-3xl">
             {t("aboutDesc")}
           </p>
-          
+
           <div className="flex gap-4 pt-4">
             <a href={cv} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1">
               {t("viewCv")}
@@ -171,11 +172,12 @@ const Aboutme = () => {
 
         {/* Skills Section - Unified Bento Grid */}
         <motion.div
+          id="skills"
+          className="scroll-mt-24 space-y-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
-          className="space-y-12"
         >
           <div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white relative inline-block mb-4">
@@ -187,20 +189,36 @@ const Aboutme = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 }
+              }
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+          >
             {skills.map((skill, index) => (
-              <div 
-                key={index} 
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.95 },
+                  show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 300 } }
+                }}
                 className={`group relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-2xl p-6 hover:bg-slate-800/50 transition-all duration-300 hover:-translate-y-2 flex flex-col items-center justify-center gap-4 ${skill.borderColor}`}
               >
                 {/* Background Glow */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl`} style={{ background: `radial-gradient(circle at center, ${skill.glowColor} 0%, transparent 80%)` }} />
-                
+
                 {/* Icon Container */}
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-slate-950/60 border border-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform duration-300 relative z-10">
                   {skill.icon}
                 </div>
-                
+
                 {/* Text Content */}
                 <div className="text-center relative z-10">
                   <h3 className="text-slate-200 font-bold text-lg md:text-xl group-hover:text-white transition-colors">
@@ -210,9 +228,9 @@ const Aboutme = () => {
                     {t(skill.level)}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Unified Timeline */}
@@ -232,7 +250,7 @@ const Aboutme = () => {
               <div key={index} className="relative group">
                 {/* Glowing line highlighter */}
                 <div className="absolute -start-[34px] md:-start-[58px] top-0 w-[2px] h-0 bg-gradient-to-b from-indigo-500 to-purple-500 group-hover:h-full transition-all duration-700 ease-out" />
-                
+
                 {/* Timeline icon indicator */}
                 <span className="absolute -start-[49px] md:-start-[73px] top-0 flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-800 bg-slate-950 text-slate-400 transition-all duration-500 group-hover:border-indigo-400 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] z-10">
                   {item.type === "teaching" ? (
@@ -246,7 +264,7 @@ const Aboutme = () => {
                 <div className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 p-6 md:p-8 rounded-3xl shadow-lg transition-all duration-500 group-hover:bg-slate-900/70 group-hover:border-indigo-500/30 group-hover:shadow-xl group-hover:-translate-y-1 overflow-hidden">
                   {/* Ambient Glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
+
                   <div className="relative z-10">
                     <span className="text-xs font-bold text-indigo-300 tracking-wider uppercase bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20 inline-block mb-4 shadow-sm">
                       {t(item.dateKey)}
