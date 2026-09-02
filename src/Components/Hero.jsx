@@ -52,22 +52,37 @@ const Hero = () => {
           {t("availableOpportunities")}
         </motion.div>
 
-        {/* Massive Title */}
-        <motion.h1
-          className="text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-tight leading-[1.1]"
-          initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-        >
-          <span className="text-xl md:text-3xl font-semibold text-slate-400 block mb-4 uppercase tracking-[0.2em]">{t("im")}</span>
-          <motion.span 
-            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-            transition={{ duration: 5, ease: "linear", repeat: Infinity }}
-            className="bg-[linear-gradient(90deg,#818cf8,#c084fc,#38bdf8,#818cf8)] bg-[length:200%_auto] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(99,102,241,0.2)]"
+        {/* Titles Container */}
+        <div className="flex flex-col items-center justify-center">
+          {/* Massive Title */}
+          <motion.h1
+            className="text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-tight leading-[1.1] mb-6"
+            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           >
-            {t("name")}
-          </motion.span>
-        </motion.h1>
+            <span className="text-xl md:text-3xl font-semibold text-slate-400 block mb-4 uppercase tracking-[0.2em]">{t("im")}</span>
+            <motion.span 
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 5, ease: "linear", repeat: Infinity }}
+              className="bg-[linear-gradient(90deg,#818cf8,#c084fc,#38bdf8,#818cf8)] bg-[length:200%_auto] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(99,102,241,0.2)]"
+            >
+              {t("name")}
+            </motion.span>
+          </motion.h1>
+
+          {/* Founder Subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 backdrop-blur-sm"
+          >
+            <span className="text-sm md:text-lg font-bold text-amber-400 uppercase tracking-[0.15em]">
+              {t("founderTitle")}
+            </span>
+          </motion.div>
+        </div>
 
         {/* Typewriter */}
         <motion.div
@@ -81,7 +96,8 @@ const Hero = () => {
           <div className="whitespace-nowrap overflow-hidden">
             <Typewriter
               words={[
-                t("typewriterFlutterDev"),
+                t("typewriterFullStack"),
+                t("typewriterFlutterNode"),
                 t("typewriterInstructor"),
                 t("typewriterUIUX"),
                 t("typewriterMobileSpec")
@@ -122,6 +138,10 @@ const Hero = () => {
           <div className="flex items-center gap-3 bg-slate-900/40 backdrop-blur-md border border-slate-800 px-5 py-3 rounded-2xl shadow-xl hover:-translate-y-1 hover:border-sky-500/30 hover:bg-slate-900/70 transition-all duration-300 group">
             <img src={flutterIcon} alt="Flutter" className="w-8 h-8 group-hover:scale-110 transition-transform" />
             <span className="text-slate-200 font-bold tracking-wide">Flutter</span>
+          </div>
+          <div className="flex items-center gap-3 bg-slate-900/40 backdrop-blur-md border border-slate-800 px-5 py-3 rounded-2xl shadow-xl hover:-translate-y-1 hover:border-green-500/30 hover:bg-slate-900/70 transition-all duration-300 group">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" className="w-8 h-8 text-green-500 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.7c0-29-23.1-54.3-53.4-54.3H167.8c-29.5 0-53.4 24.6-53.4 54.3v101.8c0 29 23.9 54.6 53.4 54.6zM210 50.4c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.2 9.1-20.3 20.1-20.3z"></path></svg>
+            <span className="text-slate-200 font-bold tracking-wide">Node.js</span>
           </div>
         </motion.div>
 

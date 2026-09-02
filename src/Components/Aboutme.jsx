@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaGithub, FaNodeJs, FaDatabase, FaLayerGroup, FaPython, FaMobileAlt, FaCogs } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaJs, FaGithub, FaNodeJs, FaDatabase, FaLayerGroup, FaPython, FaMobileAlt, FaCogs, FaWhatsapp, FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
 import { SiFirebase } from "react-icons/si";
 import { MdOutlineApi } from "react-icons/md";
 import { GraduationCap, Briefcase, Award } from "lucide-react";
@@ -96,10 +96,25 @@ const skills = [
     icon: <FaCogs className="text-4xl text-slate-400" />,
     glowColor: "rgba(148,163,184,0.15)",
     borderColor: "hover:border-slate-500/30",
+  },
+  {
+    name: "Node.js",
+    level: "lvlBackendSetup",
+    icon: <FaNodeJs className="text-4xl md:text-5xl text-green-500" />,
+    glowColor: "rgba(34,197,94,0.15)",
+    borderColor: "hover:border-green-500/30",
   }
 ];
 
 const timeline = [
+  {
+    dateKey: "timelineCcDate",
+    institutionKey: "ccAcad",
+    branchKey: "tantaEgypt",
+    roleKey: "roleFounder",
+    detailsKey: "teachingAndManaging",
+    type: "teaching",
+  },
   {
     dateKey: "timelineItiDate",
     institutionKey: "itiInst",
@@ -141,32 +156,83 @@ const Aboutme = () => {
         {/* Intro Section */}
         <motion.div
           id="about"
-          className="scroll-mt-24 max-w-4xl space-y-6"
+          className="scroll-mt-24 max-w-5xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">
-            {t("aboutTitle")}
-          </h2>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-            {t("im")} <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-sky-400 bg-clip-text text-transparent">{t("name")}</span>
-          </h1>
-          <h3 className="text-xl md:text-2xl font-semibold text-slate-200">
-            {t("aboutRole")}
-          </h3>
-          <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-3xl">
-            {t("aboutDesc")}
-          </p>
+          {/* Academy Profile Banner */}
+          <div className="mb-24 rounded-3xl shadow-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md overflow-hidden flex flex-col">
+            {/* Cover Image */}
+            <div className="h-48 md:h-64 w-full overflow-hidden relative group">
+              <img src="/Images/fb_cover.png" alt="C&C Academy Cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 hover:opacity-100" />
+            </div>
 
-          <div className="flex gap-4 pt-4">
-            <a href={cv} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1">
-              {t("viewCv")}
-            </a>
-            <a href="#contact" className="px-8 py-3 bg-slate-900/40 backdrop-blur-md border border-slate-800 hover:border-indigo-500/40 text-slate-300 hover:text-white font-bold rounded-xl transition-all duration-300 hover:-translate-y-1">
-              {t("contactMe")}
-            </a>
+            {/* Bottom Info Section */}
+            <div className="relative px-6 md:px-10 pb-8 pt-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+
+              {/* Profile Picture */}
+              <div className="absolute -top-16 md:-top-20 left-6 md:left-10 p-2 bg-slate-950 rounded-full border border-slate-800 shadow-xl z-10">
+                <img src="/Images/fb_profile.png" alt="C&C Academy Profile" className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover" />
+              </div>
+
+              {/* Info and Social Links */}
+              <div className="flex-1 mt-2 md:mt-0 md:ml-[160px]">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">C&C Academy</h3>
+                <p className="text-xs text-indigo-400 mb-4 font-bold uppercase tracking-[0.2em]">Design it. Code it. Build the future.</p>
+
+                {/* Social Icons */}
+                <div className="flex flex-wrap items-center gap-3">
+                  <a href="https://wa.me/201272442829" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-green-500/10 hover:border-green-500/50 text-slate-400 hover:text-green-500 transition-all duration-300 hover:-translate-y-1">
+                    <FaWhatsapp className="text-lg" />
+                  </a>
+                  <a href="https://www.facebook.com/cadcode.academy" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-blue-600/10 hover:border-blue-600/50 text-slate-400 hover:text-blue-500 transition-all duration-300 hover:-translate-y-1">
+                    <FaFacebook className="text-lg" />
+                  </a>
+                  <a href="https://www.instagram.com/cadcode.academy/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-pink-500/10 hover:border-pink-500/50 text-slate-400 hover:text-pink-500 transition-all duration-300 hover:-translate-y-1">
+                    <FaInstagram className="text-lg" />
+                  </a>
+                  <a href="https://www.tiktok.com/@cadcode.academy" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-white/10 hover:border-white/50 text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1">
+                    <FaTiktok className="text-lg" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/codenova-academy/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-sky-500/10 hover:border-sky-500/50 text-slate-400 hover:text-sky-400 transition-all duration-300 hover:-translate-y-1">
+                    <FaLinkedin className="text-lg" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Visit Button */}
+              <div className="mt-4 md:mt-0 flex-shrink-0">
+                <a href="https://cadcode-neon.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] transition-all duration-300 text-sm hover:-translate-y-1">
+                  Visit Website
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-4xl space-y-6">
+            <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">
+              {t("aboutTitle")}
+            </h2>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              {t("im")} <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-sky-400 bg-clip-text text-transparent">{t("name")}</span>
+            </h1>
+            <h3 className="text-xl md:text-2xl font-semibold text-slate-200">
+              {t("aboutRole")}
+            </h3>
+            <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-3xl">
+              {t("aboutDesc")}
+            </p>
+
+            <div className="flex gap-4 pt-4">
+              <a href={cv} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1">
+                {t("viewCv")}
+              </a>
+              <a href="#contact" className="px-8 py-3 bg-slate-900/40 backdrop-blur-md border border-slate-800 hover:border-indigo-500/40 text-slate-300 hover:text-white font-bold rounded-xl transition-all duration-300 hover:-translate-y-1">
+                {t("contactMe")}
+              </a>
+            </div>
           </div>
         </motion.div>
 

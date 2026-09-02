@@ -10,6 +10,8 @@ import {
   FaWhatsapp,
   FaTelegram,
   FaPaperPlane,
+  FaInstagram,
+  FaTiktok,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
@@ -91,7 +93,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Social Grid Card */}
+            {/* Personal Social Grid Card */}
             <div className="hover-shimmer bg-slate-900/30 border border-slate-900/80 p-6 rounded-2xl shadow-lg">
               <h3 className="font-bold text-xs text-slate-500 uppercase tracking-[0.2em] mb-4 text-center">{t("connectWithMe")}</h3>
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -137,6 +139,8 @@ const Contact = () => {
                 </a>
               </div>
             </div>
+
+
           </div>
 
           {/* Form (3 columns on md/lg) */}
