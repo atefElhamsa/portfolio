@@ -14,23 +14,11 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 lg:px-32 py-28 md:py-36 bg-slate-950 text-white overflow-hidden"
     >
-      {/* Dynamic Animated Background Orbs matching Contact/Projects */}
+      {/* Dynamic Background - CSS-only for performance */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(99,102,241,0.06),transparent_50%)]" />
-      <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(79,70,229,0.1)_0%,transparent_60%)]"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_60%)]"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[30vw] h-[30vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(168,85,247,0.1)_0%,transparent_60%)]"
-      />
+      <div className="absolute top-[10%] left-[10%] w-[40vw] h-[40vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(79,70,229,0.1)_0%,transparent_60%)] animate-float-1" />
+      <div className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_60%)] animate-float-2" />
+      <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[30vw] h-[30vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(168,85,247,0.1)_0%,transparent_60%)] animate-float-1" />
 
       {/* Grid Pattern overlay matching original style */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-50 pointer-events-none" />

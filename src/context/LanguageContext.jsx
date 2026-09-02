@@ -68,6 +68,7 @@ const translations = {
     timelineItiDate: "July 2025 – August 2025",
     timelineNtiDate: "May 2025 – July 2025",
     timelineCoreDate: "June 2025 – October 2025",
+    timelineEduDate: "2022 – June 2026",
     itiCamp: "Intensive Code Camp – Summer Internship",
     ntiCamp: "Intensive Code Camp – Internship",
     itiInst: "Information Technology Institute (ITI)",
@@ -78,6 +79,10 @@ const translations = {
     roleInstructor: "Instructor",
     roleDev: "Mobile App Developer using Flutter",
     teachingFlutter: "Teaching Mobile App Development using Flutter",
+    tantaUniv: "Tanta University",
+    facultyCompInfo: "Faculty of Computers & Information",
+    bscDegree: "B.Sc. in Computers and Information",
+    graduatedJune2026: "Graduated June 2026 · Graduation project: QualiVerse (AI-Powered Accreditation System)",
 
     // Projects
     myWork: "My Work",
@@ -196,6 +201,7 @@ const translations = {
     timelineItiDate: "يوليو 2025 – أغسطس 2025",
     timelineNtiDate: "مايو 2025 – يوليو 2025",
     timelineCoreDate: "يونيو 2025 – أكتوبر 2025",
+    timelineEduDate: "2022 – يونيو 2026",
     itiCamp: "معسكر الكود المكثف – تدريب صيفي",
     ntiCamp: "معسكر الكود المكثف – تدريب",
     itiInst: "معهد تكنولوجيا المعلومات (ITI)",
@@ -206,6 +212,10 @@ const translations = {
     roleInstructor: "محاضر",
     roleDev: "مطور تطبيقات هاتف باستخدام Flutter",
     teachingFlutter: "تدريس تطوير تطبيقات الهاتف باستخدام Flutter",
+    tantaUniv: "جامعة طنطا",
+    facultyCompInfo: "كلية الحاسبات والمعلومات",
+    bscDegree: "بكالوريوس الحاسبات والمعلومات",
+    graduatedJune2026: "تخرج يونيو 2026 · مشروع التخرج: QualiVerse (نظام اعتماد أكاديمي بالذكاء الاصطناعي)",
 
     // Projects
     myWork: "أعمالي",

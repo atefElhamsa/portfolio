@@ -15,15 +15,22 @@ function App() {
   const { t, language } = useLanguage();
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const progress = (window.scrollY / totalHeight) * 100;
-        setScrollProgress(progress);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalHeight > 0) {
+            const progress = (window.scrollY / totalHeight) * 100;
+            setScrollProgress(progress);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -35,7 +42,7 @@ function App() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* Floating Ambient Glow Orbs */}
+      {/* Floating Ambient Glow Orbs - CSS-only for performance */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
         <div className="w-[450px] h-[450px] rounded-full fixed top-1/4 left-[-100px] animate-float-1 bg-[radial-gradient(circle,rgba(168,85,247,0.15)_0%,transparent_60%)] will-change-transform" />
         <div className="w-[600px] h-[600px] rounded-full fixed bottom-1/4 right-[-150px] animate-float-2 bg-[radial-gradient(circle,rgba(99,102,241,0.08)_0%,transparent_60%)] will-change-transform" />

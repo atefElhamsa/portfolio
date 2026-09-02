@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaGithub, FaNodeJs, FaDatabase, FaLayerGroup, FaPython, FaMobileAlt, FaCogs, FaWhatsapp, FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
-import { SiFirebase } from "react-icons/si";
+import { FaGithub, FaNodeJs, FaDatabase, FaLayerGroup, FaPython, FaMobileAlt, FaCogs, FaWhatsapp, FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
+import { SiFirebase, SiSupabase } from "react-icons/si";
 import { MdOutlineApi } from "react-icons/md";
 import { GraduationCap, Briefcase, Award } from "lucide-react";
 import { motion } from "framer-motion";
@@ -103,6 +103,13 @@ const skills = [
     icon: <FaNodeJs className="text-4xl md:text-5xl text-green-500" />,
     glowColor: "rgba(34,197,94,0.15)",
     borderColor: "hover:border-green-500/30",
+  },
+  {
+    name: "Supabase",
+    level: "lvlAppArchitecture",
+    icon: <SiSupabase className="text-4xl md:text-5xl text-emerald-500" />,
+    glowColor: "rgba(62,207,142,0.15)",
+    borderColor: "hover:border-emerald-400/30",
   }
 ];
 
@@ -139,6 +146,14 @@ const timeline = [
     detailsKey: "teachingFlutter",
     type: "teaching",
   },
+  {
+    dateKey: "timelineEduDate",
+    institutionKey: "tantaUniv",
+    branchKey: "facultyCompInfo",
+    roleKey: "bscDegree",
+    detailsKey: "graduatedJune2026",
+    type: "education",
+  },
 ];
 
 const Aboutme = () => {
@@ -166,7 +181,7 @@ const Aboutme = () => {
           <div className="mb-24 rounded-3xl shadow-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md overflow-hidden flex flex-col">
             {/* Cover Image */}
             <div className="h-48 md:h-64 w-full overflow-hidden relative group">
-              <img src="/Images/fb_cover.png" alt="C&C Academy Cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 hover:opacity-100" />
+              <img src="/Images/fb_cover.png" alt="C&C Academy Cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 hover:opacity-100" loading="lazy" />
             </div>
 
             {/* Bottom Info Section */}
@@ -174,7 +189,7 @@ const Aboutme = () => {
 
               {/* Profile Picture */}
               <div className="absolute -top-16 md:-top-20 left-6 md:left-10 p-2 bg-slate-950 rounded-full border border-slate-800 shadow-xl z-10">
-                <img src="/Images/fb_profile.png" alt="C&C Academy Profile" className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover" />
+                <img src="/Images/fb_profile.png" alt="C&C Academy Profile" className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover" loading="lazy" />
               </div>
 
               {/* Info and Social Links */}
@@ -321,6 +336,8 @@ const Aboutme = () => {
                 <span className="absolute -start-[49px] md:-start-[73px] top-0 flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-800 bg-slate-950 text-slate-400 transition-all duration-500 group-hover:border-indigo-400 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] z-10">
                   {item.type === "teaching" ? (
                     <Briefcase className="w-4 h-4" />
+                  ) : item.type === "education" ? (
+                    <GraduationCap className="w-5 h-5 text-purple-400" />
                   ) : (
                     <GraduationCap className="w-5 h-5" />
                   )}
