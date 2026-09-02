@@ -64,9 +64,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 backdrop-blur-sm whitespace-nowrap"
           >
-            <span className="text-sm md:text-lg font-bold text-amber-400 uppercase tracking-[0.15em]">
+            <span className="text-xs sm:text-sm md:text-lg font-bold text-amber-400 uppercase tracking-[0.1em] sm:tracking-[0.15em] whitespace-nowrap">
               {t("founderTitle")}
             </span>
           </motion.div>
