@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { FaGithub, FaNodeJs, FaDatabase, FaLayerGroup, FaPython, FaMobileAlt, FaCogs, FaWhatsapp, FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaGithub, FaNodeJs, FaDatabase, FaLayerGroup, FaPython, FaMobileAlt, FaCogs } from "react-icons/fa";
 import { SiFirebase, SiSupabase } from "react-icons/si";
 import { MdOutlineApi } from "react-icons/md";
-import { GraduationCap, Briefcase, Award } from "lucide-react";
-import { motion } from "framer-motion";
+import { GraduationCap, Briefcase, Award, MapPin, Calendar, Building2, Globe, Sparkles, BookOpen } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import dartIcon from "/Images/dart-icon.svg";
 import flutterIcon from "/Images/flutter-icon.svg";
@@ -113,48 +113,140 @@ const skills = [
   }
 ];
 
-const timeline = [
+const workList = [
   {
-    dateKey: "timelineCcDate",
-    institutionKey: "ccAcad",
-    branchKey: "tantaEgypt",
-    roleKey: "roleFounder",
-    detailsKey: "teachingAndManaging",
-    type: "teaching",
+    roleKey: "workRoleProgrammingInstructor",
+    companyKey: "workCompanyCAC",
+    periodKey: "workPeriodCAC",
+    locationKey: "cairoEgypt",
+    descKey: "workDescCAC",
+    isOnline: true,
+    isCurrent: true,
+    tags: ["JavaScript", "Python", "Problem Solving", "Online Teaching"],
+    color: "cyan",
+    glow: "rgba(6,182,212,0.15)",
   },
   {
-    dateKey: "timelineItiDate",
-    institutionKey: "itiInst",
-    branchKey: "tantaBranch",
-    roleKey: "itiCamp",
-    detailsKey: "roleDev",
-    type: "internship",
+    roleKey: "workRoleCcInstructor",
+    companyKey: "workCompanyCcAcademy",
+    periodKey: "workPeriodCc",
+    locationKey: "workLocationOnline",
+    descKey: "workDescCc",
+    isOnline: true,
+    isCurrent: true,
+    tags: ["Flutter", "Python", "C++", "Custom Systems", "Mobile Apps"],
+    color: "emerald",
+    glow: "rgba(16,185,129,0.15)",
   },
   {
-    dateKey: "timelineNtiDate",
-    institutionKey: "ntiInst",
-    branchKey: "tantaBranch",
-    roleKey: "ntiCamp",
-    detailsKey: "roleDev",
-    type: "internship",
-  },
-  {
-    dateKey: "timelineCoreDate",
-    institutionKey: "coreAcad",
-    branchKey: "tantaEgypt",
-    roleKey: "roleInstructor",
-    detailsKey: "teachingFlutter",
-    type: "teaching",
-  },
-  {
-    dateKey: "timelineEduDate",
-    institutionKey: "tantaUniv",
-    branchKey: "facultyCompInfo",
-    roleKey: "bscDegree",
-    detailsKey: "graduatedJune2026",
-    type: "education",
+    roleKey: "workRoleInstructor",
+    companyKey: "workCompanyCoreAcademy",
+    periodKey: "workPeriodCore",
+    locationKey: "tantaEgypt",
+    descKey: "workDescCore",
+    isOnline: false,
+    isCurrent: false,
+    tags: ["Flutter", "Dart", "Mobile Dev", "Mentoring"],
+    color: "indigo",
+    glow: "rgba(99,102,241,0.15)",
   },
 ];
+
+const educationList = [
+  {
+    roleKey: "eduDegree",
+    companyKey: "eduInstitution",
+    branchKey: "eduFaculty",
+    periodKey: "eduPeriod",
+    locationKey: "tantaEgypt",
+    descKey: "eduDesc",
+    type: "education",
+    tags: ["B.Sc. Degree", "Computer Science", "QualiVerse AI"],
+    color: "purple",
+    glow: "rgba(168,85,247,0.15)",
+  },
+  {
+    roleKey: "internItiTitle",
+    companyKey: "internItiCompany",
+    branchKey: "internItiBranch",
+    periodKey: "internItiPeriod",
+    locationKey: "tantaEgypt",
+    descKey: "internItiDesc",
+    type: "internship",
+    tags: ["Flutter", "BLoC", "Clean Architecture", "Firebase"],
+    color: "sky",
+    glow: "rgba(14,165,233,0.15)",
+  },
+  {
+    roleKey: "internNtiTitle",
+    companyKey: "internNtiCompany",
+    branchKey: "internNtiBranch",
+    periodKey: "internNtiPeriod",
+    locationKey: "tantaEgypt",
+    descKey: "internNtiDesc",
+    type: "internship",
+    tags: ["Flutter", "REST API", "Dio", "Responsive UI"],
+    color: "violet",
+    glow: "rgba(139,92,246,0.15)",
+  },
+];
+
+const colorMap = {
+  cyan: {
+    border: "hover:border-cyan-500/40 group-hover:border-cyan-500/30",
+    dot: "bg-cyan-500",
+    tag: "text-cyan-300 border-cyan-500/25 bg-cyan-500/10",
+    icon: "text-cyan-400 group-hover:text-cyan-300",
+    roleColor: "text-cyan-400",
+    iconBg: "bg-cyan-500/10 border-cyan-500/20",
+    badge: "bg-cyan-500/15 text-cyan-300 border-cyan-500/30",
+  },
+  indigo: {
+    border: "hover:border-indigo-500/40 group-hover:border-indigo-500/30",
+    dot: "bg-indigo-500",
+    tag: "text-indigo-300 border-indigo-500/25 bg-indigo-500/10",
+    icon: "text-indigo-400 group-hover:text-indigo-300",
+    roleColor: "text-indigo-400",
+    iconBg: "bg-indigo-500/10 border-indigo-500/20",
+    badge: "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
+  },
+  emerald: {
+    border: "hover:border-emerald-500/40 group-hover:border-emerald-500/30",
+    dot: "bg-emerald-500",
+    tag: "text-emerald-300 border-emerald-500/25 bg-emerald-500/10",
+    icon: "text-emerald-400 group-hover:text-emerald-300",
+    roleColor: "text-emerald-400",
+    iconBg: "bg-emerald-500/10 border-emerald-500/20",
+    badge: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  },
+  sky: {
+    border: "hover:border-sky-500/40 group-hover:border-sky-500/30",
+    dot: "bg-sky-500",
+    tag: "text-sky-300 border-sky-500/25 bg-sky-500/10",
+    icon: "text-sky-400 group-hover:text-sky-300",
+    roleColor: "text-sky-400",
+    iconBg: "bg-sky-500/10 border-sky-500/20",
+    badge: "bg-sky-500/15 text-sky-300 border-sky-500/30",
+  },
+  purple: {
+    border: "hover:border-purple-500/40 group-hover:border-purple-500/30",
+    dot: "bg-purple-500",
+    tag: "text-purple-300 border-purple-500/25 bg-purple-500/10",
+    icon: "text-purple-400 group-hover:text-purple-300",
+    roleColor: "text-purple-400",
+    iconBg: "bg-purple-500/10 border-purple-500/20",
+    badge: "bg-purple-500/15 text-purple-300 border-purple-500/30",
+  },
+  violet: {
+    border: "hover:border-violet-500/40 group-hover:border-violet-500/30",
+    dot: "bg-violet-500",
+    tag: "text-violet-300 border-violet-500/25 bg-violet-500/10",
+    icon: "text-violet-400 group-hover:text-violet-300",
+    roleColor: "text-violet-400",
+    iconBg: "bg-violet-500/10 border-violet-500/20",
+    badge: "bg-violet-500/15 text-violet-300 border-violet-500/30",
+  },
+};
 
 const Aboutme = () => {
   const { t } = useLanguage();
@@ -177,54 +269,6 @@ const Aboutme = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Academy Profile Banner */}
-          <div className="mb-24 rounded-3xl shadow-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-md overflow-hidden flex flex-col">
-            {/* Cover Image */}
-            <div className="h-48 md:h-64 w-full overflow-hidden relative group">
-              <img src="/Images/fb_cover.png" alt="C&C Academy Cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 hover:opacity-100" loading="lazy" />
-            </div>
-
-            {/* Bottom Info Section */}
-            <div className="relative px-6 md:px-10 pb-8 pt-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
-
-              {/* Profile Picture */}
-              <div className="absolute -top-16 md:-top-20 left-6 md:left-10 p-2 bg-slate-950 rounded-full border border-slate-800 shadow-xl z-10">
-                <img src="/Images/fb_profile.png" alt="C&C Academy Profile" className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover" loading="lazy" />
-              </div>
-
-              {/* Info and Social Links */}
-              <div className="flex-1 mt-2 md:mt-0 md:ml-[160px]">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">C&C Academy</h3>
-                <p className="text-xs text-indigo-400 mb-4 font-bold uppercase tracking-[0.2em]">Design it. Code it. Build the future.</p>
-
-                {/* Social Icons */}
-                <div className="flex flex-wrap items-center gap-3">
-                  <a href="https://wa.me/201272442829" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-green-500/10 hover:border-green-500/50 text-slate-400 hover:text-green-500 transition-all duration-300 hover:-translate-y-1">
-                    <FaWhatsapp className="text-lg" />
-                  </a>
-                  <a href="https://www.facebook.com/cadcode.academy" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-blue-600/10 hover:border-blue-600/50 text-slate-400 hover:text-blue-500 transition-all duration-300 hover:-translate-y-1">
-                    <FaFacebook className="text-lg" />
-                  </a>
-                  <a href="https://www.instagram.com/cadcode.academy/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-pink-500/10 hover:border-pink-500/50 text-slate-400 hover:text-pink-500 transition-all duration-300 hover:-translate-y-1">
-                    <FaInstagram className="text-lg" />
-                  </a>
-                  <a href="https://www.tiktok.com/@cadcode.academy" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-white/10 hover:border-white/50 text-slate-400 hover:text-white transition-all duration-300 hover:-translate-y-1">
-                    <FaTiktok className="text-lg" />
-                  </a>
-                  <a href="https://www.linkedin.com/company/codenova-academy/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:bg-sky-500/10 hover:border-sky-500/50 text-slate-400 hover:text-sky-400 transition-all duration-300 hover:-translate-y-1">
-                    <FaLinkedin className="text-lg" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Visit Button */}
-              <div className="mt-4 md:mt-0 flex-shrink-0">
-                <a href="https://cadcode-neon.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_25px_rgba(79,70,229,0.5)] transition-all duration-300 text-sm hover:-translate-y-1">
-                  Visit Website
-                </a>
-              </div>
-            </div>
-          </div>
 
           <div className="max-w-4xl space-y-6">
             <h2 className="text-xs uppercase tracking-[0.25em] text-indigo-400 font-bold mb-2">
@@ -314,61 +358,232 @@ const Aboutme = () => {
           </motion.div>
         </motion.div>
 
-        {/* Unified Timeline */}
+        {/* ── Experience & Education Unified Hub ── */}
         <motion.div
+          id="experience"
+          className="scroll-mt-24 space-y-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 relative inline-block mb-16">
-            {t("expEducation")}
-            <span className="absolute -bottom-3 start-0 w-1/2 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
-          </h2>
+          {/* Header */}
+          <div className="space-y-3 pb-4 border-b border-slate-900">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest w-fit">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{t("expEduSectionTitle")}</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+              {t("expEduSectionTitle")}
+            </h2>
+            <p className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed">
+              {t("expEduSectionDesc")}
+            </p>
+          </div>
 
-          <div className="relative max-w-4xl ps-8 md:ps-14 border-s-2 border-indigo-500/20 space-y-12">
-            {timeline.map((item, index) => (
-              <div key={index} className="relative group">
-                {/* Glowing line highlighter */}
-                <div className="absolute -start-[34px] md:-start-[58px] top-0 w-[2px] h-0 bg-gradient-to-b from-indigo-500 to-purple-500 group-hover:h-full transition-all duration-700 ease-out" />
-
-                {/* Timeline icon indicator */}
-                <span className="absolute -start-[49px] md:-start-[73px] top-0 flex items-center justify-center w-10 h-10 rounded-full border-2 border-slate-800 bg-slate-950 text-slate-400 transition-all duration-500 group-hover:border-indigo-400 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] z-10">
-                  {item.type === "teaching" ? (
-                    <Briefcase className="w-4 h-4" />
-                  ) : item.type === "education" ? (
-                    <GraduationCap className="w-5 h-5 text-purple-400" />
-                  ) : (
-                    <GraduationCap className="w-5 h-5" />
-                  )}
-                </span>
-
-                {/* Glassmorphic timeline card */}
-                <div className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 p-6 md:p-8 rounded-3xl shadow-lg transition-all duration-500 group-hover:bg-slate-900/70 group-hover:border-indigo-500/30 group-hover:shadow-xl group-hover:-translate-y-1 overflow-hidden">
-                  {/* Ambient Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                  <div className="relative z-10">
-                    <span className="text-xs font-bold text-indigo-300 tracking-wider uppercase bg-indigo-500/10 px-4 py-1.5 rounded-full border border-indigo-500/20 inline-block mb-4 shadow-sm">
-                      {t(item.dateKey)}
-                    </span>
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">
-                      {t(item.institutionKey)}
-                    </h3>
-                    <p className="text-sm text-slate-400 mb-4 font-semibold flex items-center gap-2">
-                      <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
-                      {t(item.branchKey)}
-                    </p>
-                    <p className="text-slate-300 text-base leading-relaxed">
-                      {t(item.roleKey)} &ndash;{" "}
-                      <span className="text-indigo-400 font-bold">
-                        {t(item.detailsKey)}
-                      </span>
-                    </p>
-                  </div>
+          {/* Direct 2-Column Grid (No Filters) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* Column 1: Work & Teaching Experience */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 pb-3 border-b border-slate-800/80">
+                <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                  <Briefcase className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight">{t("sectionWorkTitle")}</h3>
+                  <p className="text-xs text-slate-400 mt-0.5">{t("sectionWorkSubtitle")}</p>
                 </div>
               </div>
-            ))}
+
+              <div className="space-y-4">
+                {workList.map((item, idx) => {
+                  const c = colorMap[item.color] || colorMap.indigo;
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.08 }}
+                      className={`group relative bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 ${c.border} rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 overflow-hidden shadow-lg hover:shadow-2xl`}
+                    >
+                      {/* Shimmer line on top */}
+                      <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent ${c.icon} opacity-30 group-hover:opacity-100 transition-opacity`} />
+                      
+                      {/* Ambient glow */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        style={{ background: `radial-gradient(circle at 15% 50%, ${item.glow} 0%, transparent 65%)` }}
+                      />
+
+                      <div className="relative z-10 flex flex-col gap-3.5">
+                        {/* Top Badges */}
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${c.badge}`}>
+                            {t(item.periodKey)}
+                          </span>
+
+                          <div className="flex items-center gap-2">
+                            {item.isOnline && (
+                              <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300">
+                                <Globe className="w-3 h-3 animate-spin-slow" />
+                                <span>Online</span>
+                              </span>
+                            )}
+                            {item.isCurrent && (
+                              <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                <span>{t("workCurrentLabel")}</span>
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Role & Company */}
+                        <div>
+                          <h4 className={`text-base font-extrabold ${c.roleColor} group-hover:brightness-110 transition-all`}>
+                            {t(item.roleKey)}
+                          </h4>
+                          <div className="flex items-center gap-2 mt-1">
+                            <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                            <span className="text-sm font-bold text-slate-200">
+                              {t(item.companyKey)}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Location */}
+                        <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+                          <MapPin className="w-3 h-3 text-slate-500 shrink-0" />
+                          <span>{t(item.locationKey)}</span>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                          {t(item.descKey)}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800/80">
+                          {item.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className={`text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md border ${c.tag}`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Column 2: Education & Technical Internships */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 pb-3 border-b border-slate-800/80">
+                <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+                  <GraduationCap className="w-4.5 h-4.5" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight">{t("sectionEduTitle")}</h3>
+                  <p className="text-xs text-slate-400 mt-0.5">{t("sectionEduSubtitle")}</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {educationList.map((item, idx) => {
+                  const c = colorMap[item.color] || colorMap.purple;
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.08 }}
+                      className={`group relative bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 ${c.border} rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 overflow-hidden shadow-lg hover:shadow-2xl`}
+                    >
+                      {/* Shimmer line on top */}
+                      <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-current to-transparent ${c.icon} opacity-30 group-hover:opacity-100 transition-opacity`} />
+
+                      {/* Ambient glow */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        style={{ background: `radial-gradient(circle at 15% 50%, ${item.glow} 0%, transparent 65%)` }}
+                      />
+
+                      <div className="relative z-10 flex flex-col gap-3.5">
+                        {/* Top Badges */}
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${c.badge}`}>
+                            {t(item.periodKey)}
+                          </span>
+
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-800/70 border border-slate-700/60 text-slate-300">
+                            {item.type === "education" ? (
+                              <>
+                                <GraduationCap className="w-3 h-3 text-purple-400" />
+                                <span>University Degree</span>
+                              </>
+                            ) : (
+                              <>
+                                <Award className="w-3 h-3 text-sky-400" />
+                                <span>Intensive Camp</span>
+                              </>
+                            )}
+                          </span>
+                        </div>
+
+                        {/* Role / Degree */}
+                        <div>
+                          <h4 className={`text-base font-extrabold ${c.roleColor} group-hover:brightness-110 transition-all`}>
+                            {t(item.roleKey)}
+                          </h4>
+                          <div className="flex items-center gap-2 mt-1">
+                            <Building2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                            <span className="text-sm font-bold text-slate-200">
+                              {t(item.companyKey)}
+                            </span>
+                          </div>
+                          {item.branchKey && (
+                            <p className="text-xs text-slate-400 mt-0.5 font-medium">
+                              {t(item.branchKey)}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Location */}
+                        <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+                          <MapPin className="w-3 h-3 text-slate-500 shrink-0" />
+                          <span>{t(item.locationKey)}</span>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                          {t(item.descKey)}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800/80">
+                          {item.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className={`text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md border ${c.tag}`}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </motion.div>
 
