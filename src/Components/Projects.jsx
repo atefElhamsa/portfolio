@@ -6,6 +6,7 @@ import {
   FaDownload,
   FaStar,
   FaGooglePlay,
+  FaApple,
 } from "react-icons/fa";
 import {
   Layers,
@@ -161,8 +162,9 @@ const Projects = () => {
       description: t("projCcAcademyDesc"),
       image: ccScreen1,
       screenshots: [ccScreen1, ccScreen2, ccScreen3, ccScreen4, ccScreen5],
+      appStore: "https://apps.apple.com/us/app/c-c-academy/id6833968728",
       playStore: "https://play.google.com/store/apps/details?id=com.cadandcode.academy",
-      tags: ["Flutter", "Dart", "Google Play Live", "REST API", "Clean Architecture"],
+      tags: ["Flutter", "Dart", "App Store", "Google Play", "REST API", "Clean Architecture"],
       category: "Education & Mobile",
       featured: true,
       accentColor: "emerald",
@@ -365,7 +367,10 @@ const Projects = () => {
           {/* Quick Metrics Bar */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 pt-6 border-t border-slate-900/80">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-300 bg-slate-900/60 px-3.5 py-1.5 rounded-full border border-slate-800/80">
-              <FaGooglePlay className="text-emerald-400 text-xs" />
+              <div className="flex items-center gap-1.5">
+                <FaApple className="text-sky-300 text-xs" />
+                <FaGooglePlay className="text-emerald-400 text-[11px]" />
+              </div>
               <span>{t("liveOnStore")}</span>
             </div>
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-300 bg-slate-900/60 px-3.5 py-1.5 rounded-full border border-slate-800/80">
@@ -595,6 +600,18 @@ const Projects = () => {
 
                         {/* Action Buttons Bar */}
                         <div className="flex flex-wrap items-center gap-3 pt-6 mt-4 border-t border-slate-800/80">
+                          {project.appStore && (
+                            <a
+                              href={project.appStore}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold rounded-xl shadow-lg shadow-sky-500/25 hover:shadow-sky-400/35 transition-all duration-300 text-xs group/btn"
+                            >
+                              <FaApple className="text-sm group-hover/btn:scale-110 transition-transform" />
+                              <span>{t("btnAppStore")}</span>
+                            </a>
+                          )}
+
                           {project.playStore && (
                             <a
                               href={project.playStore}
@@ -755,6 +772,18 @@ const Projects = () => {
 
                     {/* Action Buttons Footer */}
                     <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-slate-800/70">
+                      {project.appStore && (
+                        <a
+                          href={project.appStore}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center px-3.5 py-1.5 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white rounded-lg shadow-md shadow-blue-950/40 hover:shadow-blue-500/20 transition-all duration-300 text-xs font-semibold group/btn"
+                        >
+                          <FaApple className="me-1.5 text-xs group-hover/btn:scale-110 transition-transform" />
+                          <span>{t("btnAppStore")}</span>
+                        </a>
+                      )}
+
                       {project.playStore && (
                         <a
                           href={project.playStore}
@@ -932,6 +961,17 @@ const Projects = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
+                  {modalProject.appStore && (
+                    <a
+                      href={modalProject.appStore}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors"
+                    >
+                      <FaApple className="text-xs" />
+                      <span>{t("btnAppStore")}</span>
+                    </a>
+                  )}
                   {modalProject.playStore && (
                     <a
                       href={modalProject.playStore}

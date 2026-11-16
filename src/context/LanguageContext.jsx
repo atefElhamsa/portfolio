@@ -118,18 +118,19 @@ const translations = {
     btnDemo: "Demo",
     btnDownload: "Try for Windows",
     btnPlayStore: "Google Play",
-    liveOnStore: "Live on Play Store",
+    btnAppStore: "App Store",
+    liveOnStore: "Live on App Store & Google Play",
     viewScreenshots: "View Screenshots",
     closeModal: "Close",
     techStackLabel: "Tech Stack:",
 
     // Project Badges
     badgeGraduationProject: "Graduation Project · AI-Powered",
-    badgeLiveGooglePlay: "Live on Google Play · Official Academy App",
+    badgeLiveGooglePlay: "Live on App Store & Google Play · Official Academy App",
 
     // Project Names & Descriptions
     projCcAcademyName: "C&C Academy — Learning Platform",
-    projCcAcademyDesc: "The official mobile application for C&C Academy (CAD & Code), published live on Google Play. An interactive educational platform delivering structured courses in programming, software engineering, and CAD design. Features progress tracking, interactive learning modules, and up-to-date resources for aspiring developers.",
+    projCcAcademyDesc: "The official mobile application for C&C Academy (CAD & Code), published live on the Apple App Store and Google Play. An interactive educational platform delivering structured courses in programming, software engineering, and CAD design. Features progress tracking, interactive learning modules, and up-to-date resources for aspiring developers.",
     projBmiName: "BMI Calculator",
     projBmiDesc: "BmiApp is a Flutter application that calculates Body Mass Index (BMI) based on user input for height and weight.",
     projQuizName: "Quiz App",
@@ -283,18 +284,19 @@ const translations = {
     btnDemo: "عرض حي",
     btnDownload: "جرب التطبيق (Windows)",
     btnPlayStore: "Google Play",
-    liveOnStore: "متاح على Google Play",
+    btnAppStore: "App Store",
+    liveOnStore: "متاح على App Store و Google Play",
     viewScreenshots: "عرض لقطات الشاشة",
     closeModal: "إغلاق",
     techStackLabel: "التقنيات:",
 
     // Project Badges
     badgeGraduationProject: "مشروع التخرج · مدعوم بالذكاء الاصطناعي",
-    badgeLiveGooglePlay: "متاح على Google Play · التطبيق الرسمي للأكاديمية",
+    badgeLiveGooglePlay: "متاح على App Store و Google Play · التطبيق الرسمي للأكاديمية",
 
     // Project Names & Descriptions
     projCcAcademyName: "أكاديمية C&C — منصة التعليم التقني",
-    projCcAcademyDesc: "التطبيق الرسمي لأكاديمية C&C (CAD & Code) المنشور على متجر Google Play. منصة تعليمية متكاملة لتقديم دورات تدريبية متقدمة في البرمجة وهندسة البرمجيات والتصميم الهندسي، مع تتبع تقدم الطلاب والدروس التطبيقية لتأهيل الكوادر لسوق العمل التقني.",
+    projCcAcademyDesc: "التطبيق الرسمي لأكاديمية C&C (CAD & Code) المنشور رسمياً على متجري Apple App Store و Google Play. منصة تعليمية متكاملة لتقديم دورات تدريبية متقدمة في البرمجة وهندسة البرمجيات والتصميم الهندسي، مع تتبع تقدم الطلاب والدروس التطبيقية لتأهيل الكوادر لسوق العمل التقني.",
     projBmiName: "حاسبة كتلة الجسم",
     projBmiDesc: "تطبيق BmiApp هو تطبيق Flutter يحسب مؤشر كتلة الجسم (BMI) بناءً على مدخلات الطول والوزن من المستخدم.",
     projQuizName: "تطبيق الاختبارات",
